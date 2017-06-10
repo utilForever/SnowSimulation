@@ -1,6 +1,8 @@
 # Snow Simulation
 
-It is snow simulation based on Disney's MPM(Material Point Method) Snow Paper ["The material point method for Snow Simulation"](https://www.math.ucla.edu/~jteran/papers/SSCTS13.pdf).
+It is snow simulation based on Disney's ["The material point method for Snow Simulation"](https://www.math.ucla.edu/~jteran/papers/SSCTS13.pdf) paper.
+
+![Architecture](https://github.com/utilForever/SnowSimulation/blob/master/Architecture.png)
 
 [![License](https://img.shields.io/badge/Licence-MIT-blue.svg)](https://github.com/utilForever/CubbyFlow/blob/master/LICENSE)
 
