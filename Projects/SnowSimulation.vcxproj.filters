@@ -37,6 +37,12 @@
     <ClCompile Include="..\Sources\UI\MainWindow.cpp">
       <Filter>Sources\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\CollapsibleBox.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\UI\ViewPanel.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\SnowSimulation.qrc">
@@ -52,6 +58,12 @@
   <ItemGroup>
     <ClInclude Include="..\Generated\ui_MainWindow.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\CollapsibleBox.h">
+      <Filter>Sources\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\ViewPanel.h">
+      <Filter>Sources\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

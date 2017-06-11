@@ -78,7 +78,9 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Sources\main.cpp" />
+    <ClCompile Include="..\Sources\UI\CollapsibleBox.cpp" />
     <ClCompile Include="..\Sources\UI\MainWindow.cpp" />
+    <ClCompile Include="..\Sources\UI\ViewPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\SnowSimulation.qrc">
@@ -118,6 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generated\ui_MainWindow.h" />
+    <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
+    <ClInclude Include="..\Sources\UI\ViewPanel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
