@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_SnowSimulation.h"
+#include "ui_MainWindow.h"
 
 class MainWindow : public QMainWindow
 {
@@ -11,5 +11,5 @@ public:
 	MainWindow(QWidget *parent = Q_NULLPTR);
 
 private:
-	Ui::SnowSimulationClass ui;
+	Ui::MainWindow ui;
 };
