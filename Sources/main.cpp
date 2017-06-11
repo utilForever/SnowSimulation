@@ -6,7 +6,7 @@
 > Created Time: 2017/03/30
 > Copyright (c) 2017, Chan-Ho Chris Ohk
 *************************************************************************/
-#include <QtWidgets/QApplication>
+#include <iostream>
 
 #include "UI/MainWindow.h"
 
@@ -14,6 +14,15 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	MainWindow w;
-	w.show();
-	return a.exec();
+
+	if (argc < 2)
+	{
+		w.show();
+		return a.exec();
+	}
+
+	std::cout << "Unknown argument " << argv[1] <<
+		", Run with empty argument list to run with GUI.\n";
+	
+	return 0;
 }
