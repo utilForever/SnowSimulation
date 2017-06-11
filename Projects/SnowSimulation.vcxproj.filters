@@ -38,9 +38,6 @@
     <ClCompile Include="..\Generated\Debug\moc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Release\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\UI\MainWindow.cpp">
       <Filter>Sources\UI</Filter>
     </ClCompile>
