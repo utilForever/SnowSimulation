@@ -5,3 +5,8 @@ ViewPanel::ViewPanel(QWidget *parent) :
 {
 	
 }
+
+ViewPanel::~ViewPanel()
+{
+	
+}

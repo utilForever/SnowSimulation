@@ -4,4 +4,5 @@ class ViewPanel : public QGLWidget
 {
 public:
 	ViewPanel(QWidget *parent);
+	virtual ~ViewPanel();
 };
