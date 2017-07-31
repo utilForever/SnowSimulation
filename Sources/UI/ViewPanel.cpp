@@ -10,3 +10,13 @@ ViewPanel::~ViewPanel()
 {
 	
 }
+
+bool ViewPanel::StartSimulation()
+{
+	return true;
+}
+
+void ViewPanel::StopSimulation()
+{
+	
+}

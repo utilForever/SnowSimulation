@@ -5,4 +5,7 @@ class ViewPanel : public QGLWidget
 public:
 	ViewPanel(QWidget *parent);
 	virtual ~ViewPanel();
+
+	bool StartSimulation();
+	void StopSimulation();
 };
