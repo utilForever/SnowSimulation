@@ -25,6 +25,9 @@ public:
 	explicit MainWindow(QWidget* parent = nullptr);
 	~MainWindow();
 
+	void StartSimulation();
+	void StopSimulation();
+
 private:
 	void SetupUI();
 

@@ -25,6 +25,16 @@ MainWindow::~MainWindow()
 	m_ui = nullptr;
 }
 
+void MainWindow::StartSimulation()
+{
+	
+}
+
+void MainWindow::StopSimulation()
+{
+	
+}
+
 void MainWindow::SetupUI()
 {
 	
