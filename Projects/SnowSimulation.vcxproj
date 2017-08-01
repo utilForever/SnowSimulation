@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generated\ui_MainWindow.h" />
+    <ClInclude Include="..\Sources\Common\Renderable.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <ClInclude Include="..\Sources\UI\ViewPanel.h" />
   </ItemGroup>

@@ -18,6 +18,9 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Sources\Common">
+      <UniqueIdentifier>{cdb87cd1-1935-4a71-a7b5-b764ee031247}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -59,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\UI\ViewPanel.h">
       <Filter>Sources\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Common\Renderable.h">
+      <Filter>Sources\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
