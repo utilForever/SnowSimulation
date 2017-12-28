@@ -42,3 +42,30 @@ void UISettings::SetSetting(const QString& name, const QVariant& value)
 	QSettings setting("utilForever", "SnowSimulation");
 	setting.setValue(name, value);
 }
+
+void UISettings::LoadSettings()
+{
+    QSettings setting("utilForever", "SnowSimulation");
+
+    m_windowPosition() = setting.value("windowPosition", QPoint(0, 0)).toPoint();
+    m_windowSize() = setting.value("windowSize", QSize(1000, 800)).toSize();
+
+    m_fillNumParticles() = setting.value("fillNumParticles", 512 * 128).toInt();
+    m_fillResolution() = setting.value("fillResolution", 0.05f).toFloat();
+    m_fillDensity() = setting.value("fillDensity", 150.f).toFloat();
+
+    m_exportDensity() = setting.value("exportDensity", false).toBool();
+    m_exportVelocity() = setting.value("exportVelocity", false).toBool();
+    m_exportFPS() = setting.value("exportFPS", 24).toInt();
+    m_maxTime() = setting.value("maxTime", 3).toFloat();
+
+    m_gridPosition() = vec3(
+        setting.value("gridPositionX", 0.f).toFloat(),
+        setting.value("gridPositionY", 0.f).toFloat(),
+        setting.value("gridPositionZ", 0.f).toFloat());
+    m_gridDimensions() = glm::ivec3(
+        setting.value("gridDimensionX", 128).toInt(),
+        setting.value("gridDimensionY", 128).toInt(),
+        setting.value("gridDimensionZ", 128).toInt());
+    m_gridResolution() = setting.value("gridResolution", 0.05f).toFloat();
+}
