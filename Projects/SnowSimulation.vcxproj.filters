@@ -41,6 +41,9 @@
     <ClCompile Include="..\Generated\qrc_Icons.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\UISettings.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -52,6 +55,9 @@
     <CustomBuild Include="..\Resources\Icons\Icons.qrc">
       <Filter>Resources</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\Sources\UI\ViewPanel.h">
+      <Filter>Sources\UI</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generated\ui_MainWindow.h">
@@ -60,11 +66,11 @@
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h">
       <Filter>Sources\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\UI\ViewPanel.h">
-      <Filter>Sources\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Common\Renderable.h">
       <Filter>Sources\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\UISettings.h">
+      <Filter>Sources\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
