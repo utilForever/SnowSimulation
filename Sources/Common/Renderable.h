@@ -1,5 +1,5 @@
 /*************************************************************************
-> File Name: Renderable.cpp
+> File Name: Renderable.h
 > Project Name: SnowSimulation
 > Author: Chan-Ho Chris Ohk
 > Purpose: The common renderable header file of snow simulation.
