@@ -57,7 +57,7 @@ public:
 		NODE_FORCE
 	};
 
-	enum ParticlesMode
+	enum class ParticlesMode
 	{
 		PARTICLE_MASS,
 		PARTICLE_VELOCITY,
