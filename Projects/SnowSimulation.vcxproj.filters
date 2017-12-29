@@ -72,6 +72,9 @@
     <ClInclude Include="..\Sources\UI\UISettings.h">
       <Filter>Sources\UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Common\Math.h">
+      <Filter>Sources\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
