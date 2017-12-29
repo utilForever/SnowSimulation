@@ -14,33 +14,33 @@ UISettings* UISettings::m_instance = nullptr;
 
 UISettings* UISettings::GetInstance()
 {
-	if (m_instance == nullptr)
-	{
-		m_instance = new UISettings();
-	}
-	
-	return m_instance;
+    if (m_instance == nullptr)
+    {
+        m_instance = new UISettings();
+    }
+
+    return m_instance;
 }
 
 void UISettings::DeleteInstance()
 {
-	if (m_instance != nullptr)
-	{
-		delete m_instance;
-		m_instance = nullptr;
-	}
+    if (m_instance != nullptr)
+    {
+        delete m_instance;
+        m_instance = nullptr;
+    }
 }
 
 QVariant UISettings::GetSetting(const QString& name, const QVariant& value)
 {
-	QSettings setting("utilForever", "SnowSimulation");
-	return setting.value(name, value);
+    QSettings setting("utilForever", "SnowSimulation");
+    return setting.value(name, value);
 }
 
 void UISettings::SetSetting(const QString& name, const QVariant& value)
 {
-	QSettings setting("utilForever", "SnowSimulation");
-	setting.setValue(name, value);
+    QSettings setting("utilForever", "SnowSimulation");
+    setting.setValue(name, value);
 }
 
 void UISettings::LoadSettings()
@@ -68,4 +68,21 @@ void UISettings::LoadSettings()
         setting.value("gridDimensionY", 128).toInt(),
         setting.value("gridDimensionZ", 128).toInt());
     m_gridResolution() = setting.value("gridResolution", 0.05f).toFloat();
+
+    m_timeStep() = setting.value("timeStep", 1e-5).toFloat();
+    m_implicit() = setting.value("implicit", true).toBool();
+    m_materialPreset() = setting.value("materialPreset", static_cast<int>(SnowMaterialPreset::MAT_DEFAULT)).toInt();
+
+    m_showContainers() = setting.value("showContainers", true).toBool();
+    m_showContainersMode() = setting.value("showContainersMode", static_cast<int>(MeshMode::WIREFRAME)).toInt();
+    m_showColliders() = setting.value("showColliders", true).toBool();
+    m_showCollidersMode() = setting.value("showCollidersMode", static_cast<int>(MeshMode::SOLID)).toInt();
+    m_showGrid() = setting.value("showGrid", false).toBool();
+    m_showGridMode() = setting.value("showGridMode", static_cast<int>(GridMode::MIN_FACE_CELLS)).toInt();
+    m_showGridData() = setting.value("showGridData", false).toBool();
+    m_showGridDataMode() = setting.value("showGridDataMode", static_cast<int>(GridDataMode::NODE_DENSITY)).toInt();
+    m_showParticles() = setting.value("showParticles", true).toBool();
+    m_showParticlesMode() = setting.value("showParticlesMode", static_cast<int>(ParticlesMode::PARTICLE_MASS)).toInt();
+
+    m_selectionColor() = glm::vec4(0.302f, 0.773f, 0.839f, 1.f);
 }
