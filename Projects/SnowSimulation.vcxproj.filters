@@ -21,6 +21,9 @@
     <Filter Include="Sources\Common">
       <UniqueIdentifier>{cdb87cd1-1935-4a71-a7b5-b764ee031247}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\CUDA">
+      <UniqueIdentifier>{e558cd7e-ae77-422f-bc0d-11e43c9ee7ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Common\Math.h">
       <Filter>Sources\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Vector.h">
+      <Filter>Sources\CUDA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
