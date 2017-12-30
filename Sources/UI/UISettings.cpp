@@ -59,7 +59,7 @@ void UISettings::LoadSettings()
     m_exportFPS() = setting.value("exportFPS", 24).toInt();
     m_maxTime() = setting.value("maxTime", 3).toFloat();
 
-    m_gridPosition() = vec3(
+    m_gridPosition() = Vec3(
         setting.value("gridPositionX", 0.f).toFloat(),
         setting.value("gridPositionY", 0.f).toFloat(),
         setting.value("gridPositionZ", 0.f).toFloat());

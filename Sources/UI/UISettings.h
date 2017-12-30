@@ -103,7 +103,7 @@ private:
 	DEFINE_SETTING(int, m_exportFPS);
 	DEFINE_SETTING(float, m_maxTime);
 
-	DEFINE_SETTING(vec3, m_gridPosition);
+	DEFINE_SETTING(Vec3, m_gridPosition);
 	DEFINE_SETTING(glm::ivec3, m_gridDimensions);
 	DEFINE_SETTING(float, m_gridResolution);
 
