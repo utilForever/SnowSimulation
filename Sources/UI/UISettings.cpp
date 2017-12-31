@@ -6,7 +6,8 @@
 > Created Time: 2017/12/28
 > Copyright (c) 2017, Chan-Ho Chris Ohk
 *************************************************************************/
-#include "UISettings.h"
+#include <Geometry/Grid.h>
+#include <UI/UISettings.h>
 
 #include <QSettings>
 
@@ -85,4 +86,58 @@ void UISettings::LoadSettings()
     m_showParticlesMode() = setting.value("showParticlesMode", static_cast<int>(ParticlesMode::PARTICLE_MASS)).toInt();
 
     m_selectionColor() = glm::vec4(0.302f, 0.773f, 0.839f, 1.f);
+}
+
+void UISettings::SaveSettings()
+{
+    QSettings setting("utilForever", "SnowSimulation");
+
+    setting.setValue("windowPosition", m_windowPosition());
+    setting.setValue("windowSize", m_windowSize());
+
+    setting.setValue("fillNumParticles", m_fillNumParticles());
+    setting.setValue("fillResolution", m_fillResolution());
+    setting.setValue("fillDensity", m_fillDensity());
+
+    setting.setValue("exportDensity", m_exportDensity());
+    setting.setValue("exportVelocity", m_exportVelocity());
+    setting.setValue("exportFPS", m_exportFPS());
+    setting.setValue("maxTime", m_maxTime());
+
+    setting.setValue("gridPositionX", m_gridPosition().x);
+    setting.setValue("gridPositionY", m_gridPosition().y);
+    setting.setValue("gridPositionZ", m_gridPosition().z);
+
+    setting.setValue("gridDimensionX", m_gridDimensions().x);
+    setting.setValue("gridDimensionY", m_gridDimensions().y);
+    setting.setValue("gridDimensionZ", m_gridDimensions().z);
+
+    setting.setValue("gridResolution", m_gridResolution());
+
+    setting.setValue("timeStep", m_timeStep());
+    setting.setValue("implicit", m_implicit());
+    setting.setValue("materialPreset", m_materialPreset());
+
+    setting.setValue("showContainers", m_showContainers());
+    setting.setValue("showContainersMode", m_showContainersMode());
+    setting.setValue("showColliders", m_showColliders());
+    setting.setValue("showCollidersMode", m_showCollidersMode());
+    setting.setValue("showGrid", m_showGrid());
+    setting.setValue("showGridMode", m_showGridMode());
+    setting.setValue("showGridData", m_showGridData());
+    setting.setValue("showGridDataMode", m_showGridDataMode());
+    setting.setValue("showParticles", m_showParticles());
+    setting.setValue("showParticlesMode", m_showParticlesMode());
+}
+
+Grid UISettings::BuildGrid(const glm::mat4& ctm)
+{
+    Grid grid;
+    const glm::vec4 point = ctm * glm::vec4(0, 0, 0, 1);
+
+    grid.pos = Vec3(point.x, point.y, point.z);
+    grid.dim = m_gridDimensions();
+    grid.h = m_gridResolution();
+
+    return grid;
 }
