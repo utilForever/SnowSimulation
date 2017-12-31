@@ -9,6 +9,8 @@
 #ifndef SNOW_SIMULATION_VECTOR_H
 #define SNOW_SIMULATION_VECTOR_H
 
+#include <cuda_runtime.h>
+
 #ifdef __CUDACC_
 #include <Math.h>
 #endif
@@ -20,8 +22,6 @@
 #endif
 
 #include <glm/vec3.hpp>
-
-#include <cuda_runtime.h>
 
 #include <stdio.h>
 
