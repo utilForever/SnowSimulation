@@ -89,40 +89,40 @@ protected:
 private:
 	static UISettings* m_instance;
 
-	DEFINE_SETTING(QPoint, m_windowPosition);
-	DEFINE_SETTING(QSize, m_windowSize);
+	DEFINE_SETTING(QPoint, windowPosition);
+	DEFINE_SETTING(QSize, windowSize);
 
 	// Filling
-	DEFINE_SETTING(int, m_fillNumParticles);
-	DEFINE_SETTING(float, m_fillDensity);
-	DEFINE_SETTING(float, m_fillResolution);
+	DEFINE_SETTING(int, fillNumParticles);
+	DEFINE_SETTING(float, fillDensity);
+	DEFINE_SETTING(float, fillResolution);
 
 	// Exporting
-	DEFINE_SETTING(bool, m_exportDensity);
-	DEFINE_SETTING(bool, m_exportVelocity);
-	DEFINE_SETTING(int, m_exportFPS);
-	DEFINE_SETTING(float, m_maxTime);
+	DEFINE_SETTING(bool, exportDensity);
+	DEFINE_SETTING(bool, exportVelocity);
+	DEFINE_SETTING(int, exportFPS);
+	DEFINE_SETTING(float, maxTime);
 
-	DEFINE_SETTING(Vec3, m_gridPosition);
-	DEFINE_SETTING(glm::ivec3, m_gridDimensions);
-	DEFINE_SETTING(float, m_gridResolution);
+	DEFINE_SETTING(Vec3, gridPosition);
+	DEFINE_SETTING(glm::ivec3, gridDimensions);
+	DEFINE_SETTING(float, gridResolution);
 
-	DEFINE_SETTING(float, m_timeStep);
-	DEFINE_SETTING(bool, m_implicit);
-	DEFINE_SETTING(int, m_materialPreset);
+	DEFINE_SETTING(float, timeStep);
+	DEFINE_SETTING(bool, implicit);
+	DEFINE_SETTING(int, materialPreset);
 
-	DEFINE_SETTING(bool, m_showContainers);
-	DEFINE_SETTING(int, m_showContainersMode);
-	DEFINE_SETTING(bool, m_showColliders);
-	DEFINE_SETTING(int, m_showCollidersMode);
-	DEFINE_SETTING(bool, m_showGrid);
-	DEFINE_SETTING(int, m_showGridMode);
-	DEFINE_SETTING(bool, m_showGridData);
-	DEFINE_SETTING(int, m_showGridDataMode);
-	DEFINE_SETTING(bool, m_showParticles);
-	DEFINE_SETTING(int, m_showParticlesMode);
+	DEFINE_SETTING(bool, showContainers);
+	DEFINE_SETTING(int, showContainersMode);
+	DEFINE_SETTING(bool, showColliders);
+	DEFINE_SETTING(int, showCollidersMode);
+	DEFINE_SETTING(bool, showGrid);
+	DEFINE_SETTING(int, showGridMode);
+	DEFINE_SETTING(bool, showGridData);
+	DEFINE_SETTING(int, showGridDataMode);
+	DEFINE_SETTING(bool, showParticles);
+	DEFINE_SETTING(int, showParticlesMode);
 
-	DEFINE_SETTING(glm::vec4, m_selectionColor);
+	DEFINE_SETTING(glm::vec4, selectionColor);
 };
 
 #endif
