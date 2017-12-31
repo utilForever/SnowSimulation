@@ -50,6 +50,9 @@
     <ClCompile Include="..\Sources\UI\UISettings.cpp">
       <Filter>Sources\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\UserInput.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Geometry\Grid.h">
       <Filter>Sources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\UserInput.h">
+      <Filter>Sources\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

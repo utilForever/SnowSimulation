@@ -87,6 +87,7 @@
     <ClCompile Include="..\Sources\UI\CollapsibleBox.cpp" />
     <ClCompile Include="..\Sources\UI\MainWindow.cpp" />
     <ClCompile Include="..\Sources\UI\UISettings.cpp" />
+    <ClCompile Include="..\Sources\UI\UserInput.cpp" />
     <ClCompile Include="..\Sources\UI\ViewPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     <ClInclude Include="..\Sources\Geometry\Grid.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <ClInclude Include="..\Sources\UI\UISettings.h" />
+    <ClInclude Include="..\Sources\UI\UserInput.h" />
     <CustomBuild Include="..\Sources\UI\ViewPanel.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing ViewPanel.h...</Message>
