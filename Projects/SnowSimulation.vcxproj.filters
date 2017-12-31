@@ -24,6 +24,9 @@
     <Filter Include="Sources\CUDA">
       <UniqueIdentifier>{e558cd7e-ae77-422f-bc0d-11e43c9ee7ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Geometry">
+      <UniqueIdentifier>{786621ee-18ba-4984-bf8b-019dbd6bda38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\CUDA\Vector.h">
       <Filter>Sources\CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Geometry\Grid.h">
+      <Filter>Sources\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

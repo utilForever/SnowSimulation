@@ -118,6 +118,7 @@
     <ClInclude Include="..\Sources\Common\Math.h" />
     <ClInclude Include="..\Sources\Common\Renderable.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />
+    <ClInclude Include="..\Sources\Geometry\Grid.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <ClInclude Include="..\Sources\UI\UISettings.h" />
     <CustomBuild Include="..\Sources\UI\ViewPanel.h">
