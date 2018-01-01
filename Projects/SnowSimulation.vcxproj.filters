@@ -100,7 +100,10 @@
       <Filter>Sources\Simulation</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h">
-      <Filter>Sources\Geometry</Filter>
+      <Filter>Sources\Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Quaternion.h">
+      <Filter>Sources\CUDA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

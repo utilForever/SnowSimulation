@@ -115,6 +115,7 @@
     <ClInclude Include="..\Generated\ui_MainWindow.h" />
     <ClInclude Include="..\Sources\Common\Math.h" />
     <ClInclude Include="..\Sources\Common\Renderable.h" />
+    <ClInclude Include="..\Sources\CUDA\Quaternion.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />
     <ClInclude Include="..\Sources\Geometry\Grid.h" />
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h" />
