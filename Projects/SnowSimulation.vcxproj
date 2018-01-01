@@ -81,6 +81,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Sources\main.cpp" />
+    <ClCompile Include="..\Sources\Simulation\ParticleGrid.cpp" />
     <ClCompile Include="..\Sources\UI\CollapsibleBox.cpp" />
     <ClCompile Include="..\Sources\UI\MainWindow.cpp" />
     <ClCompile Include="..\Sources\UI\UISettings.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="..\Sources\Simulation\Material.h" />
     <ClInclude Include="..\Sources\Simulation\Particle.h" />
     <ClInclude Include="..\Sources\Simulation\Node.h" />
+    <ClInclude Include="..\Sources\Simulation\ParticleGrid.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <CustomBuild Include="..\Sources\UI\DataBinding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
