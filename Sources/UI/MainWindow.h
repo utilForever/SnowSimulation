@@ -21,12 +21,26 @@ class MainWindow : public QMainWindow
 {
 	Q_OBJECT
 
-public:
-	explicit MainWindow(QWidget* parent = nullptr);
-	~MainWindow();
+public slots:
+	void TakeScreenshot();
+	void FillNumParticleFinishedEditing();
+
+	void ImportMesh();
+	void AddCollider();
+
+	void SetVelText(bool b, float f, float x, float y, float z);
+	void SetSelectionText(QString s, bool b, int i);
 
 	void StartSimulation();
 	void StopSimulation();
+
+	void resizeEvent(QResizeEvent* event) override;
+	void moveEvent(QMoveEvent* event) override;
+	void keyPressEvent(QKeyEvent* event) override;
+
+public:
+	explicit MainWindow(QWidget* parent = nullptr);
+	~MainWindow();
 
 private:
 	void SetupUI();
