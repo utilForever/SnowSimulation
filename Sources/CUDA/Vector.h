@@ -25,7 +25,7 @@
 
 #include <stdio.h>
 
-struct Vec3
+struct Vector3
 {
     union
     {
@@ -39,7 +39,7 @@ struct Vec3
     };
 
     __host__ __device__ __forceinline__
-        Vec3()
+        Vector3()
     {
         x = 0.f;
         y = 0.f;
@@ -47,7 +47,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3(float v)
+        Vector3(float v)
     {
         x = v;
         y = v;
@@ -55,7 +55,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3(float xx, float yy, float zz)
+        Vector3(float xx, float yy, float zz)
     {
         x = xx;
         y = yy;
@@ -63,7 +63,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3(const Vec3& v)
+        Vector3(const Vector3& v)
     {
         x = v.x;
         y = v.y;
@@ -71,7 +71,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3(const glm::vec3& v)
+        Vector3(const glm::vec3& v)
     {
         x = v.x;
         y = v.y;
@@ -79,7 +79,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3(const glm::ivec3& v)
+        Vector3(const glm::ivec3& v)
     {
         x = static_cast<float>(v.x);
         y = static_cast<float>(v.y);
@@ -99,7 +99,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator=(const Vec3& rhs)
+        Vector3& operator=(const Vector3& rhs)
     {
         x = rhs.x;
         y = rhs.y;
@@ -109,7 +109,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator=(const glm::vec3& rhs)
+        Vector3& operator=(const glm::vec3& rhs)
     {
         x = rhs.x;
         y = rhs.y;
@@ -119,7 +119,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator=(const glm::ivec3& rhs)
+        Vector3& operator=(const glm::ivec3& rhs)
     {
         x = static_cast<float>(rhs.x);
         y = static_cast<float>(rhs.y);
@@ -149,42 +149,42 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        static float Dot(const Vec3& a, const Vec3& b)
+        static float Dot(const Vector3& a, const Vector3& b)
     {
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Cross(const Vec3& a, const Vec3& b)
+        static Vector3 Cross(const Vector3& a, const Vector3& b)
     {
-        return Vec3(
+        return Vector3(
             a.y * b.z - a.z * b.y,
             a.z * b.x - a.x * b.z,
             a.x * b.y - a.y * b.x);
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Floor(const Vec3& v)
+        static Vector3 Floor(const Vector3& v)
     {
-        return Vec3(std::floor(v.x), std::floor(v.y), std::floor(v.z));
+        return Vector3(std::floor(v.x), std::floor(v.y), std::floor(v.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Ceil(const Vec3& v)
+        static Vector3 Ceil(const Vector3& v)
     {
-        return Vec3(std::ceil(v.x), std::ceil(v.y), std::ceil(v.z));
+        return Vector3(std::ceil(v.x), std::ceil(v.y), std::ceil(v.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Abs(const Vec3& v)
+        static Vector3 Abs(const Vector3& v)
     {
-        return Vec3(std::fabs(v.x), std::fabs(v.y), std::fabs(v.z));
+        return Vector3(std::fabs(v.x), std::fabs(v.y), std::fabs(v.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Round(const Vec3& v)
+        static Vector3 Round(const Vector3& v)
     {
-        return Vec3(std::round(v.x), std::round(v.y), std::round(v.z));
+        return Vector3(std::round(v.x), std::round(v.y), std::round(v.z));
     }
 
     __host__ __device__ __forceinline__
@@ -194,56 +194,56 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Sign(const Vec3& v)
+        static Vector3 Sign(const Vector3& v)
     {
-        return Vec3(Sign(v.x), Sign(v.y), Sign(v.z));
+        return Vector3(Sign(v.x), Sign(v.y), Sign(v.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Min(const Vec3& v, const Vec3& w)
+        static Vector3 Min(const Vector3& v, const Vector3& w)
     {
-        return Vec3(std::min(v.x, w.x), std::min(v.y, w.y), std::min(v.z, w.z));
+        return Vector3(std::min(v.x, w.x), std::min(v.y, w.y), std::min(v.z, w.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Max(const Vec3& v, const Vec3& w)
+        static Vector3 Max(const Vector3& v, const Vector3& w)
     {
-        return Vec3(std::max(v.x, w.x), std::max(v.y, w.y), std::max(v.z, w.z));
+        return Vector3(std::max(v.x, w.x), std::max(v.y, w.y), std::max(v.z, w.z));
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Mix(const Vec3& v, const Vec3& w, const Vec3& a)
+        static Vector3 Mix(const Vector3& v, const Vector3& w, const Vector3& a)
     {
-        return Vec3(v.x * (1.f - a.x) + w.x * a.x, v.y * (1.f - a.y) + w.y * a.y, v.z * (1.f - a.z) + w.z * a.z);
+        return Vector3(v.x * (1.f - a.x) + w.x * a.x, v.y * (1.f - a.y) + w.y * a.y, v.z * (1.f - a.z) + w.z * a.z);
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Mix(const Vec3& v, const Vec3& w, float a)
+        static Vector3 Mix(const Vector3& v, const Vector3& w, float a)
     {
-        return Vec3(v.x * (1.f - a) + w.x * a, v.y * (1.f - a) + w.y * a, v.z * (1.f - a) + w.z * a);
+        return Vector3(v.x * (1.f - a) + w.x * a, v.y * (1.f - a) + w.y * a, v.z * (1.f - a) + w.z * a);
     }
 
     __host__ __device__ __forceinline__
-        static float LengthSquared(const Vec3& v)
+        static float LengthSquared(const Vector3& v)
     {
         return v.x * v.x + v.y * v.y + v.z * v.z;
     }
 
     __host__ __device__ __forceinline__
-        static float Length(const Vec3& v)
+        static float Length(const Vector3& v)
     {
         return std::sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
     }
 
     __host__ __device__ __forceinline__
-        static Vec3 Normalize(const Vec3& v)
+        static Vector3 Normalize(const Vector3& v)
     {
         float f = 1.f / std::sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-        return Vec3(f * v.x, f * v.y, f * v.z);
+        return Vector3(f * v.x, f * v.y, f * v.z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& Mul(float f)
+        Vector3& Mul(float f)
     {
         x *= f;
         y *= f;
@@ -253,7 +253,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& Add(float f)
+        Vector3& Add(float f)
     {
         x += f;
         y += f;
@@ -263,7 +263,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& Add(const Vec3& v)
+        Vector3& Add(const Vector3& v)
     {
         x += v.x;
         y += v.y;
@@ -273,7 +273,7 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator+=(const Vec3& rhs)
+        Vector3& operator+=(const Vector3& rhs)
     {
         x += rhs.x;
         y += rhs.y;
@@ -283,13 +283,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator+(const Vec3& rhs) const
+        Vector3 operator+(const Vector3& rhs) const
     {
-        return Vec3(x + rhs.x, y + rhs.y, z + rhs.z);
+        return Vector3(x + rhs.x, y + rhs.y, z + rhs.z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator-=(const Vec3& rhs)
+        Vector3& operator-=(const Vector3& rhs)
     {
         x -= rhs.x;
         y -= rhs.y;
@@ -299,13 +299,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator-(const Vec3& rhs) const
+        Vector3 operator-(const Vector3& rhs) const
     {
-        return Vec3(x - rhs.x, y - rhs.y, z - rhs.z);
+        return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator*=(const Vec3& rhs)
+        Vector3& operator*=(const Vector3& rhs)
     {
         x *= rhs.x;
         y *= rhs.y;
@@ -315,13 +315,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator*(const Vec3& rhs) const
+        Vector3 operator*(const Vector3& rhs) const
     {
-        return Vec3(x * rhs.x, y * rhs.y, z * rhs.z);
+        return Vector3(x * rhs.x, y * rhs.y, z * rhs.z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator/=(const Vec3& rhs)
+        Vector3& operator/=(const Vector3& rhs)
     {
         x /= rhs.x;
         y /= rhs.y;
@@ -331,13 +331,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator/(const Vec3& rhs) const
+        Vector3 operator/(const Vector3& rhs) const
     {
-        return Vec3(x / rhs.x, y / rhs.y, z / rhs.z);
+        return Vector3(x / rhs.x, y / rhs.y, z / rhs.z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator*=(float f)
+        Vector3& operator*=(float f)
     {
         x *= f;
         y *= f;
@@ -347,13 +347,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator*(float f) const
+        Vector3 operator*(float f) const
     {
-        return Vec3(f * x, f * y, f * z);
+        return Vector3(f * x, f * y, f * z);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator*=(double d)
+        Vector3& operator*=(double d)
     {
         x = static_cast<float>(x * d);
         y = static_cast<float>(y * d);
@@ -363,13 +363,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator*(double d) const
+        Vector3 operator*(double d) const
     {
-        return Vec3(static_cast<float>(x * d), static_cast<float>(y * d), static_cast<float>(z * d));
+        return Vector3(static_cast<float>(x * d), static_cast<float>(y * d), static_cast<float>(z * d));
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator/=(float f)
+        Vector3& operator/=(float f)
     {
         float fi = 1. / f;
         x *= fi;
@@ -380,14 +380,14 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator/(float f) const
+        Vector3 operator/(float f) const
     {
         float fi = 1.f / f;
-        return Vec3(x * fi, y * fi, z * fi);
+        return Vector3(x * fi, y * fi, z * fi);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator+=(float f)
+        Vector3& operator+=(float f)
     {
         x += f;
         y += f;
@@ -397,13 +397,13 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator+(float f) const
+        Vector3 operator+(float f) const
     {
-        return Vec3(x + f, y + f, z + f);
+        return Vector3(x + f, y + f, z + f);
     }
 
     __host__ __device__ __forceinline__
-        Vec3& operator-=(float f)
+        Vector3& operator-=(float f)
     {
         x -= f;
         y -= f;
@@ -413,9 +413,9 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        Vec3 operator-(float f) const
+        Vector3 operator-(float f) const
     {
-        return Vec3(x - f, y - f, z - f);
+        return Vector3(x - f, y - f, z - f);
     }
 
     __host__ __device__ __forceinline__
@@ -445,19 +445,19 @@ struct Vec3
     }
 
     __host__ __device__ __forceinline__
-        static void Print(const Vec3& v)
+        static void Print(const Vector3& v)
     {
         printf("[%10f %10f %10f]\n", v.x, v.y, v.z);
     }
 
     __host__ __device__ __forceinline__
-        bool operator==(const Vec3& v) const
+        bool operator==(const Vector3& v) const
     {
         return IsEqual(x, v.x) && IsEqual(y, v.y) && IsEqual(z, v.z);
     }
 
     __host__ __device__ __forceinline__
-        bool operator!=(const Vec3& v) const
+        bool operator!=(const Vector3& v) const
     {
         return IsNotEqual(x, v.x) || IsNotEqual(y, v.y) || IsNotEqual(z, v.z);
     }
@@ -465,21 +465,21 @@ struct Vec3
 };
 
 __host__ __device__ __forceinline__
-Vec3 operator-(const Vec3& v)
+Vector3 operator-(const Vector3& v)
 {
-    return Vec3(-v.x, -v.y, -v.z);
+    return Vector3(-v.x, -v.y, -v.z);
 }
 
 __host__ __device__ __forceinline__
-Vec3 operator*(float f, const Vec3& v)
+Vector3 operator*(float f, const Vector3& v)
 {
-    return Vec3(f * v.x, f * v.y, f * v.z);
+    return Vector3(f * v.x, f * v.y, f * v.z);
 }
 
 __host__ __device__ __forceinline__
-Vec3 operator*(double f, const Vec3& v)
+Vector3 operator*(double f, const Vector3& v)
 {
-    return Vec3(static_cast<float>(f * v.x), static_cast<float>(f * v.y), static_cast<float>(f * v.z));
+    return Vector3(static_cast<float>(f * v.x), static_cast<float>(f * v.y), static_cast<float>(f * v.z));
 }
 
 #endif

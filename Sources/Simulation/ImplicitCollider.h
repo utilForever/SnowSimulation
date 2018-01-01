@@ -36,9 +36,9 @@ enum class ColliderType
 struct ImplicitCollider
 {
 	ColliderType type;
-	Vec3 center;
-	Vec3 param;
-	Vec3 velocity;
+	Vector3 center;
+	Vector3 param;
+	Vector3 velocity;
 	float coeffFriction;
 
 	__host__ __device__
@@ -48,18 +48,18 @@ struct ImplicitCollider
 	}
 
 	__host__ __device__
-	ImplicitCollider(ColliderType t, Vec3 c, Vec3 p = Vec3(0, 0, 0), Vec3 v = Vec3(0, 0, 0), float f = 0.1f) :
+	ImplicitCollider(ColliderType t, Vector3 c, Vector3 p = Vector3(0, 0, 0), Vector3 v = Vector3(0, 0, 0), float f = 0.1f) :
 		type(t), center(c), param(p), velocity(v), coeffFriction(f)
 	{
-		if (p == Vec3(0, 0, 0))
+		if (p == Vector3(0, 0, 0))
 		{
 			if (t == ColliderType::HALF_PLANE)
 			{
-				param = Vec3(0, 1, 0);
+				param = Vector3(0, 1, 0);
 			}
 			else if (t == ColliderType::SPHERE)
 			{
-				param = Vec3(0.5f, 0, 0);
+				param = Vector3(0.5f, 0, 0);
 			}
 		}
 	}
@@ -76,13 +76,13 @@ struct ImplicitCollider
 	void ApplyTransformation(const glm::mat4 &ctm)
 	{
 		glm::vec4 c = ctm * glm::vec4(glm::vec3(0, 0, 0), 1.f);
-		center = Vec3(c.x, c.y, c.z);
+		center = Vector3(c.x, c.y, c.z);
 		
 		switch (type)
 		{
 		case ColliderType::HALF_PLANE:
 			glm::vec4 n = ctm * glm::vec4(glm::vec3(0, 1, 0), 0.f);
-			param = Vec3(n.x, n.y, n.z);
+			param = Vector3(n.x, n.y, n.z);
 			break;
 		case ColliderType::SPHERE:
 			const float* m = glm::value_ptr(ctm);

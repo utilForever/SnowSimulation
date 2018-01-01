@@ -53,7 +53,7 @@ struct Matrix3
 	}
 
 	__host__ __device__ __forceinline__
-	Matrix3(const Vec3& c0, const Vec3& c1, const Vec3& c2)
+	Matrix3(const Vector3& c0, const Vector3& c1, const Vector3& c2)
 	{
 		data[0] = c0.x; data[3] = c1.x; data[6] = c2.x;
 		data[1] = c0.y; data[4] = c1.y; data[7] = c2.y;
@@ -105,7 +105,7 @@ struct Matrix3
 	}
 
 	__host__ __device__ __forceinline__
-		static Matrix3 OuterProduct(const Vec3& v, const Vec3& w)
+		static Matrix3 OuterProduct(const Vector3& v, const Vector3& w)
 	{
 		return Matrix3(
 			v.x * w.x, v.y * w.x, v.z * w.x,
@@ -126,15 +126,15 @@ struct Matrix3
 	}
 
 	__host__ __device__ __forceinline__
-	Vec3 GetRow(int i) const
+	Vector3 GetRow(int i) const
 	{
-		return Vec3(data[i], data[i + 3], data[i + 6]);
+		return Vector3(data[i], data[i + 3], data[i + 6]);
 	}
 
 	__host__ __device__ __forceinline__
-	Vec3 GetColumn(int i) const
+	Vector3 GetColumn(int i) const
 	{
-		return Vec3(data[3 * i], data[3 * i + 1], data[3 * i + 2]);
+		return Vector3(data[3 * i], data[3 * i + 1], data[3 * i + 2]);
 	}
 
 	__host__ __device__ __forceinline__
@@ -172,9 +172,9 @@ struct Matrix3
 	}
 
 	__host__ __device__ __forceinline__
-	Vec3 operator*(const Vec3& rhs) const
+	Vector3 operator*(const Vector3& rhs) const
 	{
-		Vec3 result;
+		Vector3 result;
 		result.x = data[0] * rhs.x + data[3] * rhs.y + data[6] * rhs.z;
 		result.y = data[1] * rhs.x + data[4] * rhs.y + data[7] * rhs.z;
 		result.z = data[2] * rhs.x + data[5] * rhs.y + data[8] * rhs.z;
@@ -448,7 +448,7 @@ struct Matrix3
 
 	// Should be written with a more robust solver, but this will do for now
 	__host__ __device__ __forceinline__
-	static Vec3 Solve(const Matrix3& A, const Vec3& b)
+	static Vector3 Solve(const Matrix3& A, const Vector3& b)
 	{
 		return Matrix3::Inverse(A) * b;
 	}

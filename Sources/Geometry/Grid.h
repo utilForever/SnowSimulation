@@ -28,7 +28,7 @@
 struct Grid
 {
     glm::ivec3 dim;
-    Vec3 pos;
+    Vector3 pos;
     float h;
 
     FUNC Grid() : dim(0, 0, 0), pos(0, 0, 0), h(0.f)

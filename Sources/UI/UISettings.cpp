@@ -60,7 +60,7 @@ void UISettings::LoadSettings()
     exportFPS() = setting.value("exportFPS", 24).toInt();
     maxTime() = setting.value("maxTime", 3).toFloat();
 
-    gridPosition() = Vec3(
+    gridPosition() = Vector3(
         setting.value("gridPositionX", 0.f).toFloat(),
         setting.value("gridPositionY", 0.f).toFloat(),
         setting.value("gridPositionZ", 0.f).toFloat());
@@ -135,7 +135,7 @@ Grid UISettings::BuildGrid(const glm::mat4& ctm)
     Grid grid;
     const glm::vec4 point = ctm * glm::vec4(0, 0, 0, 1);
 
-    grid.pos = Vec3(point.x, point.y, point.z);
+    grid.pos = Vector3(point.x, point.y, point.z);
     grid.dim = gridDimensions();
     grid.h = gridResolution();
 

@@ -57,7 +57,7 @@ public:
 	// the SceneNode's using the CTM;
 	virtual BBox GetBBox(const glm::mat4& ctm = glm::mat4(1.f)) = 0;
 
-	virtual Vec3 GetCentroid(const glm::mat4& ctm = glm::mat4(1.f)) = 0;
+	virtual Vector3 GetCentroid(const glm::mat4& ctm = glm::mat4(1.f)) = 0;
 
 	// Used for scene interaction.
 	virtual void SetSelected(bool selected)
