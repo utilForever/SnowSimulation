@@ -99,6 +99,9 @@
     <ClInclude Include="..\Sources\Simulation\Material.h">
       <Filter>Sources\Simulation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h">
+      <Filter>Sources\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
