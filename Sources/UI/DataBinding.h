@@ -4,7 +4,7 @@
 > Author: Chan-Ho Chris Ohk
 > Purpose: Data binding classes and functions for various types.
 > Created Time: 2017/12/31
-> Copyright (c) 2017, Chan-Ho Chris Ohk
+> Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
 #ifndef SNOW_SIMULATION_DATA_BINDING_H
 #define SNOW_SIMULATION_DATA_BINDING_H

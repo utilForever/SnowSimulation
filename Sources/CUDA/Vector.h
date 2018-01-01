@@ -4,7 +4,7 @@
 > Author: Chan-Ho Chris Ohk
 > Purpose: Vector type compatibles with CUDA.
 > Created Time: 2017/12/30
-> Copyright (c) 2017, Chan-Ho Chris Ohk
+> Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
 #ifndef SNOW_SIMULATION_VECTOR_H
 #define SNOW_SIMULATION_VECTOR_H

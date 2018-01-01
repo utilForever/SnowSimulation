@@ -4,7 +4,7 @@
 > Author: Chan-Ho Chris Ohk
 > Purpose: User input UI of snow simulation.
 > Created Time: 2017/12/31
-> Copyright (c) 2017, Chan-Ho Chris Ohk
+> Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
 #include <UI/UserInput.h>
 

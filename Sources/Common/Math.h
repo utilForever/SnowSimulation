@@ -4,7 +4,7 @@
 > Author: Chan-Ho Chris Ohk
 > Purpose: The common math header file of snow simulation.
 > Created Time: 2017/12/29
-> Copyright (c) 2017, Chan-Ho Chris Ohk
+> Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
 #ifndef SNOW_SIMULATION_MATH_H
 #define SNOW_SIMULATION_MATH_H

@@ -4,7 +4,7 @@
 > Author: Chan-Ho Chris Ohk
 > Purpose: UI settings of snow simulation.
 > Created Time: 2017/12/28
-> Copyright (c) 2017, Chan-Ho Chris Ohk
+> Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
 #include <Geometry/Grid.h>
 #include <UI/UISettings.h>
