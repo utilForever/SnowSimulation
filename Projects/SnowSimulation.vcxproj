@@ -122,6 +122,7 @@
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h" />
     <ClInclude Include="..\Sources\Simulation\Material.h" />
     <ClInclude Include="..\Sources\Simulation\Particle.h" />
+    <ClInclude Include="..\Sources\Simulation\Node.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <CustomBuild Include="..\Sources\UI\DataBinding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

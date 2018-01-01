@@ -111,6 +111,9 @@
     <ClInclude Include="..\Sources\Simulation\Particle.h">
       <Filter>Sources\Simulation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\Node.h">
+      <Filter>Sources\Simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
