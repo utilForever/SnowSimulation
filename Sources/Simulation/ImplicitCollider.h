@@ -2,7 +2,7 @@
 > File Name: ImplicitCollider.h
 > Project Name: SnowSimulation
 > Author: Chan-Ho Chris Ohk
-> Purpose: Implicit collider of snow simulation.
+> Purpose: Implicit collider structure of snow simulation.
 > Created Time: 2018/01/01
 > Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
