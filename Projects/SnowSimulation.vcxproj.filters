@@ -120,6 +120,9 @@
     <ClInclude Include="..\Sources\Simulation\ParticleGrid.h">
       <Filter>Sources\Simulation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Geometry\BBox.h">
+      <Filter>Sources\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">

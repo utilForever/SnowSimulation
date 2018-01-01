@@ -119,6 +119,7 @@
     <ClInclude Include="..\Sources\CUDA\Matrix.h" />
     <ClInclude Include="..\Sources\CUDA\Quaternion.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />
+    <ClInclude Include="..\Sources\Geometry\BBox.h" />
     <ClInclude Include="..\Sources\Geometry\Grid.h" />
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h" />
     <ClInclude Include="..\Sources\Simulation\Material.h" />
