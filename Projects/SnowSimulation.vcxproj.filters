@@ -108,6 +108,9 @@
     <ClInclude Include="..\Sources\CUDA\Matrix.h">
       <Filter>Sources\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\Particle.h">
+      <Filter>Sources\Simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
