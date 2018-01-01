@@ -27,6 +27,9 @@
     <Filter Include="Sources\Geometry">
       <UniqueIdentifier>{786621ee-18ba-4984-bf8b-019dbd6bda38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Simulation">
+      <UniqueIdentifier>{e7139b74-851c-4cd9-bd41-ac54b60c13a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\UI\UserInput.h">
       <Filter>Sources\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\Material.h">
+      <Filter>Sources\Simulation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

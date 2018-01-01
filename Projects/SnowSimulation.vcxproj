@@ -117,6 +117,7 @@
     <ClInclude Include="..\Sources\Common\Renderable.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />
     <ClInclude Include="..\Sources\Geometry\Grid.h" />
+    <ClInclude Include="..\Sources\Simulation\Material.h" />
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <CustomBuild Include="..\Sources\UI\DataBinding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
