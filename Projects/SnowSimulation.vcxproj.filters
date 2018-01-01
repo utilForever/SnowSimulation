@@ -105,6 +105,9 @@
     <ClInclude Include="..\Sources\CUDA\Quaternion.h">
       <Filter>Sources\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Matrix.h">
+      <Filter>Sources\CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
