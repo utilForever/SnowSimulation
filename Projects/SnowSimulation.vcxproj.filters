@@ -123,6 +123,9 @@
     <ClInclude Include="..\Sources\Geometry\BBox.h">
       <Filter>Sources\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Common\Util.h">
+      <Filter>Sources\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
