@@ -36,8 +36,8 @@ public:
     int GetSize() const;
     int GetNodeCount() const;
 
-    virtual BBox GetBBox(const glm::mat4& ctm);
-    virtual Vector3 GetCentroid(const glm::mat4& ctm);
+    BBox GetBBox(const glm::mat4& ctm) override;
+    Vector3 GetCentroid(const glm::mat4& ctm) override;
 
     bool HasBuffers() const;
     void BuildBuffers();
