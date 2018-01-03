@@ -81,17 +81,17 @@ public:
 
 		v = transform * v;
 		v = glm::normalize(glm::inverse(ctm) * v);
-		m_velocity = glm::vec3(v.x, v.y, v.z);
+		m_velocityVector = glm::vec3(v.x, v.y, v.z);
 	}
 
 	virtual void SetMagnitude(const float m)
 	{
-		m_magnitude = m;
+		m_Velocitymagnitude = m;
 	}
 
 	virtual void SetVelocity(const glm::vec3 &vec)
 	{
-		m_velocity = vec;
+		m_velocityVector = vec;
 	}
 
 	virtual void UpdateMeshVelocity()
@@ -106,12 +106,12 @@ public:
 
 	virtual float GetMagnitude()
 	{
-		return m_magnitude;
+		return m_Velocitymagnitude;
 	}
 
 	virtual glm::vec3 GetVelocity()
 	{
-		return m_velocity;
+		return m_velocityVector;
 	}
 
 	virtual void SetCTM(const glm::mat4 &ctm)
@@ -121,12 +121,12 @@ public:
 
 	virtual glm::vec3 GetWorldVelocity(const glm::mat4& ctm)
 	{
-		if (fabs(m_magnitude - 0) < std::numeric_limits<float>::epsilon())
+		if (fabs(m_Velocitymagnitude - 0) < std::numeric_limits<float>::epsilon())
 		{
 			return glm::vec3(0);
 		}
 
-		glm::vec3 v = glm::vec3(m_velocity);
+		glm::vec3 v = glm::vec3(m_velocityVector);
 		glm::vec4 vWorld = ctm * glm::vec4(v, 0);
 		
 		return glm::normalize(glm::vec3(vWorld.x, vWorld.y, vWorld.z));
@@ -134,8 +134,8 @@ public:
 
 protected:
 	bool m_selected = false;
-	glm::vec3 m_velocity;
-	float m_magnitude = 0.0f;
+	glm::vec3 m_velocityVector;
+	float m_Velocitymagnitude = 0.0f;
 	glm::mat4 m_ctm;
 };
 
