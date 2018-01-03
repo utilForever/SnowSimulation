@@ -84,12 +84,12 @@ public:
 		m_velocityVector = glm::vec3(v.x, v.y, v.z);
 	}
 
-	virtual void SetMagnitude(const float m)
+	virtual void SetVelocityMagnitude(const float m)
 	{
 		m_Velocitymagnitude = m;
 	}
 
-	virtual void SetVelocity(const glm::vec3 &vec)
+	virtual void SetVelocityVector(const glm::vec3 &vec)
 	{
 		m_velocityVector = vec;
 	}
@@ -104,12 +104,12 @@ public:
 		// Do nothing
 	}
 
-	virtual float GetMagnitude()
+	virtual float GetVelocityMagnitude()
 	{
 		return m_Velocitymagnitude;
 	}
 
-	virtual glm::vec3 GetVelocity()
+	virtual glm::vec3 GetVelocityVector()
 	{
 		return m_velocityVector;
 	}
