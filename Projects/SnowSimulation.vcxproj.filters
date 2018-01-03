@@ -56,6 +56,9 @@
     <ClCompile Include="..\Sources\Simulation\ParticleGrid.cpp">
       <Filter>Sources\Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Simulation\ParticleSystem.cpp">
+      <Filter>Sources\Simulation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -125,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Common\Util.h">
       <Filter>Sources\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\ParticleSystem.h">
+      <Filter>Sources\Simulation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
