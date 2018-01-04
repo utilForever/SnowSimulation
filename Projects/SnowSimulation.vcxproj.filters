@@ -132,6 +132,9 @@
     <ClInclude Include="..\Sources\Simulation\ParticleSystem.h">
       <Filter>Sources\Simulation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Simulation\Caches.h">
+      <Filter>Sources\Simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
