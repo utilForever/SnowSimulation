@@ -30,6 +30,9 @@
     <Filter Include="Sources\Simulation">
       <UniqueIdentifier>{e7139b74-851c-4cd9-bd41-ac54b60c13a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Viewport">
+      <UniqueIdentifier>{5b27020a-d794-4656-b107-e7db521a7b90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -134,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Simulation\Caches.h">
       <Filter>Sources\Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Viewport\Camera.h">
+      <Filter>Sources\Viewport</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
