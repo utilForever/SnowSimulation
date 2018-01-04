@@ -33,6 +33,9 @@
     <Filter Include="Sources\Viewport">
       <UniqueIdentifier>{5b27020a-d794-4656-b107-e7db521a7b90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\UI\Tools">
+      <UniqueIdentifier>{7d6278ca-0478-4c5f-a1c0-fc70589ceb9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -61,6 +64,15 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Simulation\ParticleSystem.cpp">
       <Filter>Sources\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\UI\Tools\Tool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Release\moc_ViewPanel.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +152,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Viewport\Camera.h">
       <Filter>Sources\Viewport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\Tool.h">
+      <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
