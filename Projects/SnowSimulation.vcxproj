@@ -140,6 +140,7 @@
     <ClInclude Include="..\Sources\UI\CollapsibleBox.h" />
     <ClInclude Include="..\Sources\UI\Tools\Tool.h" />
     <ClInclude Include="..\Sources\Viewport\Camera.h" />
+    <ClInclude Include="..\Sources\Viewport\Viewport.h" />
     <CustomBuild Include="..\Sources\UI\DataBinding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing DataBinding.h...</Message>

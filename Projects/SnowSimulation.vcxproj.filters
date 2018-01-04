@@ -156,6 +156,9 @@
     <ClInclude Include="..\Sources\UI\Tools\Tool.h">
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Viewport\Viewport.h">
+      <Filter>Sources\Viewport</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
