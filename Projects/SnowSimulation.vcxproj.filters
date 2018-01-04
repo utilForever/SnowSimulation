@@ -74,6 +74,9 @@
     <ClCompile Include="..\Generated\Release\moc_ViewPanel.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Viewport\Viewport.cpp">
+      <Filter>Sources\Viewport</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">

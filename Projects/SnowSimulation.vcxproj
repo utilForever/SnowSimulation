@@ -95,6 +95,7 @@
     <ClCompile Include="..\Sources\UI\UISettings.cpp" />
     <ClCompile Include="..\Sources\UI\UserInput.cpp" />
     <ClCompile Include="..\Sources\UI\ViewPanel.cpp" />
+    <ClCompile Include="..\Sources\Viewport\Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
