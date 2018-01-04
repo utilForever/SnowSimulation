@@ -9,6 +9,8 @@
 #ifndef SNOW_SIMULATION_VIEW_PANEL_H
 #define SNOW_SIMULATION_VIEW_PANEL_H
 
+class Viewport;
+
 #include <QGLWidget>
 
 class ViewPanel : public QGLWidget
@@ -21,6 +23,11 @@ public:
 
 	bool StartSimulation();
 	void StopSimulation();
+
+protected:
+	Viewport* m_viewport;
+
+	friend class Tool;
 };
 
 #endif
