@@ -77,6 +77,9 @@
     <ClCompile Include="..\Sources\Viewport\Viewport.cpp">
       <Filter>Sources\Viewport</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Geometry\BBox.cpp">
+      <Filter>Sources\Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">

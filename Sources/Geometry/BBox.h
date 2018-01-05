@@ -19,59 +19,59 @@
 class BBox : public Renderable
 {
 public:
-    BBox();
-    BBox(const BBox& other);
-    BBox(const Grid& grid);
-    BBox(const Vector3& p);
-    BBox(const Vector3& p0, const Vector3& p1);
+	BBox();
+	BBox(const BBox& other);
+	BBox(const Grid& grid);
+	BBox(const Vector3& p);
+	BBox(const Vector3& p0, const Vector3& p1);
 
-    void Reset();
+	void Reset();
 
-    Vector3 GetCenter() const;
-    Vector3 GetMin();
-    Vector3 GetMax();
+	Vector3 GetCenter() const;
+	Vector3 GetMin() const;
+	Vector3 GetMax() const;
 
-    bool IsEmpty();
-    bool IsContains(const Vector3& point) const;
+	bool IsEmpty() const;
+	bool IsContains(const Vector3& point) const;
  
-    Vector3 GetSize() const;
-    float GetWidth() const;
-    float GetHeight() const;
-    float GetDepth() const;
+	Vector3 GetSize() const;
+	float GetWidth() const;
+	float GetHeight() const;
+	float GetDepth() const;
 
-    int GetLongestDim() const;
-    float GetLongestDimSize() const;
+	int GetLongestDim() const;
+	float GetLongestDimSize() const;
 
-    float GetVolume() const;
-    float GetSurfaceArea() const;
+	float GetVolume() const;
+	float GetSurfaceArea() const;
 
-    void Fix(float h);
+	void Fix(float h);
 
-    Grid ToGrid(float h) const;
+	Grid ToGrid(float h) const;
 
-    // Expand box by absolute distances
-    void ExpandAbs(float d);
-    void ExpandAbs(const Vector3& d);
+	// Expand box by absolute distances
+	void ExpandAbs(float d);
+	void ExpandAbs(const Vector3& d);
 
-    // Expand box relative to current size
-    void ExpandRel(float d);
-    void ExpandRel(const Vector3& d);
+	// Expand box relative to current size
+	void ExpandRel(float d);
+	void ExpandRel(const Vector3& d);
 
-    // Merge two bounding boxes
-    BBox& operator+=(const BBox& rhs);
-    BBox operator+(const BBox& rhs) const;
-    // Incorporate point into bounding box
-    BBox& operator+=(const Vector3& rhs);
-    BBox operator+(const Vector3& rhs) const;    
-    
-    void Render() override;
+	// Merge two bounding boxes
+	BBox& operator+=(const BBox& rhs);
+	BBox operator+(const BBox& rhs) const;
+	// Incorporate point into bounding box
+	BBox& operator+=(const Vector3& rhs);
+	BBox operator+(const Vector3& rhs) const;    
+	
+	void Render() override;
 
-    BBox GetBBox(const glm::mat4& ctm) override;
-    Vector3 GetCentroid(const glm::mat4& ctm) override;
-    
+	BBox GetBBox(const glm::mat4& ctm) override;
+	Vector3 GetCentroid(const glm::mat4& ctm) override;
+	
 private:
-    Vector3 m_min;
-    Vector3 m_max;
+	Vector3 m_min;
+	Vector3 m_max;
 };
 
 #endif
