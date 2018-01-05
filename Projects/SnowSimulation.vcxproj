@@ -127,6 +127,7 @@
     <ClInclude Include="..\Sources\Common\Math.h" />
     <ClInclude Include="..\Sources\Common\Renderable.h" />
     <ClInclude Include="..\Sources\Common\Util.h" />
+    <ClInclude Include="..\Sources\CUDA\Functions.h" />
     <ClInclude Include="..\Sources\CUDA\Matrix.h" />
     <ClInclude Include="..\Sources\CUDA\Quaternion.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />

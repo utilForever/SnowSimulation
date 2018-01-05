@@ -168,6 +168,9 @@
     <ClInclude Include="..\Sources\Geometry\Mesh.h">
       <Filter>Sources\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Functions.h">
+      <Filter>Sources\CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
