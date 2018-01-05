@@ -165,6 +165,9 @@
     <ClInclude Include="..\Sources\Viewport\Viewport.h">
       <Filter>Sources\Viewport</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Geometry\Mesh.h">
+      <Filter>Sources\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
