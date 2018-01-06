@@ -87,6 +87,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Sources\Geometry\BBox.cpp" />
+    <ClCompile Include="..\Sources\Geometry\Mesh.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
     <ClCompile Include="..\Sources\Simulation\ParticleGrid.cpp" />
     <ClCompile Include="..\Sources\Simulation\ParticleSystem.cpp" />

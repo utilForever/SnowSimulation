@@ -80,6 +80,9 @@
     <ClCompile Include="..\Sources\Geometry\BBox.cpp">
       <Filter>Sources\Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Geometry\Mesh.cpp">
+      <Filter>Sources\Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
