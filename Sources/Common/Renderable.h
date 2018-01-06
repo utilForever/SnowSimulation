@@ -86,7 +86,7 @@ public:
 
 	virtual void SetVelocityMagnitude(const float m)
 	{
-		m_Velocitymagnitude = m;
+		m_VelocityMagnitude = m;
 	}
 
 	virtual void SetVelocityVector(const glm::vec3 &vec)
@@ -106,7 +106,7 @@ public:
 
 	virtual float GetVelocityMagnitude()
 	{
-		return m_Velocitymagnitude;
+		return m_VelocityMagnitude;
 	}
 
 	virtual glm::vec3 GetVelocityVector()
@@ -121,7 +121,7 @@ public:
 
 	virtual glm::vec3 GetWorldVelocity(const glm::mat4& ctm)
 	{
-		if (fabs(m_Velocitymagnitude - 0) < std::numeric_limits<float>::epsilon())
+		if (fabs(m_VelocityMagnitude - 0) < std::numeric_limits<float>::epsilon())
 		{
 			return glm::vec3(0);
 		}
@@ -135,7 +135,7 @@ public:
 protected:
 	bool m_selected = false;
 	glm::vec3 m_velocityVector;
-	float m_Velocitymagnitude = 0.0f;
+	float m_VelocityMagnitude = 0.0f;
 	glm::mat4 m_ctm;
 };
 
