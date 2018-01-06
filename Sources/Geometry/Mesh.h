@@ -137,16 +137,16 @@ public:
     QVector<Normal>& GetNormals();
     const QVector<Normal>& GetNormals() const;
 
-    virtual void Render();
-    virtual void RenderForPicker();
-    virtual void RenderVelForPicker();
+    void Render() override;
+    void RenderForPicker() override;
+    void RenderVelocityForPicker() override;
 
-    virtual void RenderVelocity(bool velTool);
+    void RenderVelocity(bool velTool) override;
 
-    virtual void UpdateMeshVel();
+    void UpdateMeshVelocity() override;
 
-    virtual BBox GetBBox(const glm::mat4& ctm);
-    virtual Vector3 GetCentroid(const glm::mat4& ctm);
+    BBox GetBBox(const glm::mat4& ctm) override;
+    Vector3 GetCentroid(const glm::mat4& ctm) override;
 
     BBox GetObjectBBox() const;
 
@@ -159,11 +159,11 @@ private:
     void RenderCenter() const;
     void RenderArrow();
 
-    bool HasVelVBO() const;
-    void BuildVelVBO();
-    void DeleteVelVBO();
+    bool HasVelocityVBO() const;
+    void BuildVelocityVBO();
+    void DeleteVelocityVBO();
 
-    void RenderVelVBO();
+    void RenderVelocityVBO();
 
 	QString m_name;
 	// The OBJ file source
@@ -180,7 +180,7 @@ private:
 	QVector<Normal> m_normals;
 
 	// OpenGL stuff
-	GLuint m_glVBO, m_velVBO;
+	GLuint m_glVBO, m_velocityVBO;
 	cudaGraphicsResource* m_cudaVBO;
 
 	Color m_color;
