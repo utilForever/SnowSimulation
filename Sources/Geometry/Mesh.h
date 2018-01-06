@@ -29,7 +29,7 @@ using Color = glm::vec4;
 struct cudaGraphicsResource;
 
 class ParticleSystem;
-class BBox;
+struct BBox;
 
 class Mesh : public Renderable
 {
@@ -42,10 +42,129 @@ public:
 
 	struct Tri
 	{
-		
+        union
+	    {
+            struct { int a, b, c; };
+            int corners[3];
+        };
+
+        Tri() : a(-1), b(-1), c(-1)
+        {
+            // Do nothing
+        }
+
+        Tri(int i0, int i1, int i2) : a(i0), b(i1), c(i2)
+        {
+            // Do nothing
+        }
+
+        Tri(const Tri& other) : a(other.a), b(other.b), c(other.c)
+        {
+            // Do nothing
+        }
+
+        void Reverse()
+        {
+            std::swap(a, c);
+        }
+
+        void Offset(int offset)
+        {
+            a += offset;
+            b += offset;
+            c += offset;
+        }
+
+        int& operator[](int i)
+        {
+            return corners[i];
+        }
+        
+	    int operator[](int i) const
+        {
+            return corners[i];
+        }
 	};
 
+    Mesh();
+    Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris);
+    Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris, const QVector<Normal>& normals);
+    Mesh(const Mesh& mesh);
+
+    virtual ~Mesh();
+
+    void SetType(Type type);
+    Type GetType() const;
+
+    void Fill(ParticleSystem& particles, int particleCount, float h, float targetDensity, int materialPreset);
+
+    bool IsEmpty() const;
+    void Clear();
+
+    void ApplyTransformation(const glm::mat4& transform);
+
+    void Append(const Mesh& mesh);
+
+    void ComputeNormals();
+
+    void SetName(const QString& name);
+    QString GetName() const;
+
+    void SetFileName(const QString& fileName);
+    QString GetFileName() const;
+
+    void SetVertices(const QVector<Vertex>& vertices);
+    void AddVertex(const Vertex& vertex);
+    int GetNumVertices() const;
+    Vertex& GetVertex(int i);
+    Vertex GetVertex(int i) const;
+    QVector<Vertex>& GetVertices();
+    const QVector<Vertex>& GetVertices() const;
+
+    void SetTris(const QVector<Tri>& tris);
+    void AddTri(const Tri& tri);
+    int GetNumTris() const;
+    Tri& GetTri(int i);
+    Tri GetTri(int i) const;
+    QVector<Tri>& GetTris();
+    const QVector<Tri>& GetTris() const;
+
+    void SetNormals(const QVector<Normal>& normals);
+    void AddNormal(const Normal& normal);
+    int GetNumNormals() const;
+    Normal& GetNormal(int i);
+    Normal GetNormal(int i) const;
+    QVector<Normal>& GetNormals();
+    const QVector<Normal>& GetNormals() const;
+
+    virtual void Render();
+    virtual void RenderForPicker();
+    virtual void RenderVelForPicker();
+
+    virtual void RenderVelocity(bool velTool);
+
+    virtual void UpdateMeshVel();
+
+    virtual BBox GetBBox(const glm::mat4& ctm);
+    virtual Vector3 GetCentroid(const glm::mat4& ctm);
+
+    BBox GetObjectBBox() const;
+
 private:
+    bool HasVBO() const;
+    void BuildVBO();
+    void DeleteVBO();
+
+    void RenderVBO();
+    void RenderCenter() const;
+    void RenderArrow();
+
+    bool HasVelVBO() const;
+    void BuildVelVBO();
+    void DeleteVelVBO();
+
+    void RenderVelVBO();
+
 	QString m_name;
 	// The OBJ file source
 	QString m_fileName;
@@ -62,25 +181,11 @@ private:
 
 	// OpenGL stuff
 	GLuint m_glVBO, m_velVBO;
-	cudaGraphicsResource *m_cudaVBO;
+	cudaGraphicsResource* m_cudaVBO;
 
 	Color m_color;
 
 	int m_velVBOSize;
-
-	bool HasVBO() const;
-	void BuildVBO();
-	void DeleteVBO();
-
-	void RenderVBO();
-	void RenderCenter() const;
-	void RenderArrow();
-
-	bool HasVelVBO() const;
-	void BuildVelVBO();
-	void DeleteVelVBO();
-
-	void RenderVelVBO();
 };
 
 #endif
