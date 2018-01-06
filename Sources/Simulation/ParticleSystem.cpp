@@ -230,7 +230,7 @@ void ParticleSystem::SetVelocity()
 {
 	for (int i = 0; i < m_particles.size(); i++)
 	{
-		m_particles[i].velocity = m_velocityVector * m_Velocitymagnitude;
+		m_particles[i].velocity = m_velocityVector * m_VelocityMagnitude;
 	}
 }
 
