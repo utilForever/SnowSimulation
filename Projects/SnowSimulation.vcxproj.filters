@@ -36,6 +36,9 @@
     <Filter Include="Sources\UI\Tools">
       <UniqueIdentifier>{7d6278ca-0478-4c5f-a1c0-fc70589ceb9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\IO">
+      <UniqueIdentifier>{e1029bbc-33e6-44ce-a73e-b75c9b18cead}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -79,9 +82,6 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Geometry\Mesh.cpp">
       <Filter>Sources\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_Engine.cpp">
-      <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Simulation\Engine.cpp">
       <Filter>Sources\Simulation</Filter>
@@ -179,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\CUDA\Functions.h">
       <Filter>Sources\CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\IO\MitsubaExporter.h">
+      <Filter>Sources\IO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
