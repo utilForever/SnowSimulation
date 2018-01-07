@@ -37,7 +37,7 @@ public:
 	SceneNode(Type type = Type::TRANSFORM);
 	virtual ~SceneNode();
 
-	void ClearChildren();
+	void ClearChild();
 	void AddChild(SceneNode* child);
 	// A scene node should be deleted through its parent using this
 	// function (unless it's the root node) so that the parent
@@ -45,7 +45,7 @@ public:
 	void DeleteChild(SceneNode* child);
 
 	SceneNode* GetParent();
-	QList<SceneNode*> GetChildren();
+	QList<SceneNode*> GetChild();
 
 	bool HasRenderable() const;
 	void SetRenderable(Renderable* renderable);
@@ -94,7 +94,7 @@ private:
 
 	glm::mat4 m_transform;
 
-	QList<SceneNode*> m_children;
+	QList<SceneNode*> m_child;
 	Renderable* m_renderable;
 
 	Type m_type;
