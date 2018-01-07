@@ -210,6 +210,9 @@
     <ClInclude Include="..\Sources\Scene\SceneGrid.h">
       <Filter>Sources\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Scene\SceneNodeIterator.h">
+      <Filter>Sources\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
