@@ -86,6 +86,7 @@
     <ClCompile Include="..\Sources\Geometry\BBox.cpp" />
     <ClCompile Include="..\Sources\Geometry\Mesh.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
+    <ClCompile Include="..\Sources\Scene\SceneNode.cpp" />
     <ClCompile Include="..\Sources\Simulation\Engine.cpp" />
     <ClCompile Include="..\Sources\Simulation\ParticleGrid.cpp" />
     <ClCompile Include="..\Sources\Simulation\ParticleSystem.cpp" />
@@ -144,6 +145,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Generated\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB  "-I." "-I.\..\Libraries\glew\include" "-I.\..\Sources" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtWidgets" "-I.\..\Generated\$(ConfigurationName)\." "-I.\..\Generated" "-I$(CUDA_PATH)\include"</Command>
     </CustomBuild>
     <ClInclude Include="..\Sources\IO\MitsubaExporter.h" />
+    <ClInclude Include="..\Sources\Scene\SceneNode.h" />
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h" />
     <ClInclude Include="..\Sources\Simulation\Material.h" />
     <ClInclude Include="..\Sources\Simulation\Caches.h" />

@@ -39,6 +39,9 @@
     <Filter Include="Sources\IO">
       <UniqueIdentifier>{e1029bbc-33e6-44ce-a73e-b75c9b18cead}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Scene">
+      <UniqueIdentifier>{bab19287-b07c-4e76-be33-a505d508da54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Simulation\Engine.cpp">
       <Filter>Sources\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Scene\SceneNode.cpp">
+      <Filter>Sources\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\IO\MitsubaExporter.h">
       <Filter>Sources\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Scene\SceneNode.h">
+      <Filter>Sources\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
