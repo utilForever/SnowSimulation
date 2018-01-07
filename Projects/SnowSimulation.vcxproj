@@ -85,6 +85,7 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Geometry\BBox.cpp" />
     <ClCompile Include="..\Sources\Geometry\Mesh.cpp" />
+    <ClCompile Include="..\Sources\IO\MitsubaExporter.cpp" />
     <ClCompile Include="..\Sources\IO\ObjParser.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
     <ClCompile Include="..\Sources\Scene\Scene.cpp" />

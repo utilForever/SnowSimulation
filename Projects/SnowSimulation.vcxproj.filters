@@ -104,6 +104,9 @@
     <ClCompile Include="..\Sources\Scene\Scene.cpp">
       <Filter>Sources\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\IO\MitsubaExporter.cpp">
+      <Filter>Sources\IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
