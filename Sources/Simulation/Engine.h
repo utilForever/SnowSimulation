@@ -11,6 +11,7 @@
 
 #include <Common/Renderable.h>
 #include <Geometry/Grid.h>
+#include <IO/MitsubaExporter.h>
 #include <Simulation/ImplicitCollider.h>
 #include <Simulation/Material.h>
 

@@ -269,8 +269,8 @@ void Engine::Update()
 
         if (m_export && (m_time - m_exporter->GetLastUpdateTime() >= m_exporter->GetSPF()))
         {
-            cudaMemcpy(m_exporter->getNodesPtr(), devNodes, m_grid.GetNumOfNodes() * sizeof(Node), cudaMemcpyDeviceToHost);
-            m_exporter->runExportThread(m_time);
+            cudaMemcpy(m_exporter->GetNodesPtr(), devNodes, m_grid.GetNumOfNodes() * sizeof(Node), cudaMemcpyDeviceToHost);
+            m_exporter->RunExportThread(m_time);
         }
 
         cudaGraphicsUnmapResources(1, &m_particlesResource, nullptr);
