@@ -101,6 +101,9 @@
     <ClCompile Include="..\Sources\Scene\SceneGrid.cpp">
       <Filter>Sources\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Scene\Scene.cpp">
+      <Filter>Sources\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -211,6 +214,9 @@
       <Filter>Sources\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Scene\SceneNodeIterator.h">
+      <Filter>Sources\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Scene\Scene.h">
       <Filter>Sources\Scene</Filter>
     </ClInclude>
   </ItemGroup>
