@@ -71,9 +71,6 @@
     <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Release\moc_ViewPanel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\Viewport\Viewport.cpp">
       <Filter>Sources\Viewport</Filter>
     </ClCompile>
@@ -82,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Geometry\Mesh.cpp">
       <Filter>Sources\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Debug\moc_Engine.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Simulation\Engine.cpp">
+      <Filter>Sources\Simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +102,9 @@
     </CustomBuild>
     <CustomBuild Include="..\Sources\UI\DataBinding.h">
       <Filter>Sources\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Sources\Simulation\Engine.h">
+      <Filter>Sources\Simulation</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
