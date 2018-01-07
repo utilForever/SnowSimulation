@@ -98,6 +98,9 @@
     <ClCompile Include="..\Sources\Scene\SceneCollider.cpp">
       <Filter>Sources\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Scene\SceneGrid.cpp">
+      <Filter>Sources\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -202,6 +205,9 @@
       <Filter>Sources\IO</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Scene\SceneCollider.h">
+      <Filter>Sources\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Scene\SceneGrid.h">
       <Filter>Sources\Scene</Filter>
     </ClInclude>
   </ItemGroup>

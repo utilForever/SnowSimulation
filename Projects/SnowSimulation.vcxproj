@@ -88,6 +88,7 @@
     <ClCompile Include="..\Sources\IO\ObjParser.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
     <ClCompile Include="..\Sources\Scene\SceneCollider.cpp" />
+    <ClCompile Include="..\Sources\Scene\SceneGrid.cpp" />
     <ClCompile Include="..\Sources\Scene\SceneNode.cpp" />
     <ClCompile Include="..\Sources\Simulation\Engine.cpp" />
     <ClCompile Include="..\Sources\Simulation\ParticleGrid.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\Sources\IO\MitsubaExporter.h" />
     <ClInclude Include="..\Sources\IO\ObjParser.h" />
     <ClInclude Include="..\Sources\Scene\SceneCollider.h" />
+    <ClInclude Include="..\Sources\Scene\SceneGrid.h" />
     <ClInclude Include="..\Sources\Scene\SceneNode.h" />
     <ClInclude Include="..\Sources\Simulation\ImplicitCollider.h" />
     <ClInclude Include="..\Sources\Simulation\Material.h" />
