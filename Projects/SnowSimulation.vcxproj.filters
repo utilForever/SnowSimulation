@@ -92,6 +92,9 @@
     <ClCompile Include="..\Sources\Scene\SceneNode.cpp">
       <Filter>Sources\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\IO\ObjParser.cpp">
+      <Filter>Sources\IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Scene\SceneNode.h">
       <Filter>Sources\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\IO\ObjParser.h">
+      <Filter>Sources\IO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
