@@ -42,128 +42,128 @@ public:
 
 	struct Tri
 	{
-        union
-	    {
-            struct { int a, b, c; };
-            int corners[3];
-        };
+		union
+		{
+			struct { int a, b, c; };
+			int corners[3];
+		};
 
-        Tri() : a(-1), b(-1), c(-1)
-        {
-            // Do nothing
-        }
+		Tri() : a(-1), b(-1), c(-1)
+		{
+			// Do nothing
+		}
 
-        Tri(int i0, int i1, int i2) : a(i0), b(i1), c(i2)
-        {
-            // Do nothing
-        }
+		Tri(int i0, int i1, int i2) : a(i0), b(i1), c(i2)
+		{
+			// Do nothing
+		}
 
-        Tri(const Tri& other) : a(other.a), b(other.b), c(other.c)
-        {
-            // Do nothing
-        }
+		Tri(const Tri& other) : a(other.a), b(other.b), c(other.c)
+		{
+			// Do nothing
+		}
 
-        void Reverse()
-        {
-            std::swap(a, c);
-        }
+		void Reverse()
+		{
+			std::swap(a, c);
+		}
 
-        void Offset(int offset)
-        {
-            a += offset;
-            b += offset;
-            c += offset;
-        }
+		void Offset(int offset)
+		{
+			a += offset;
+			b += offset;
+			c += offset;
+		}
 
-        int& operator[](int i)
-        {
-            return corners[i];
-        }
-        
-	    int operator[](int i) const
-        {
-            return corners[i];
-        }
+		int& operator[](int i)
+		{
+			return corners[i];
+		}
+		
+		int operator[](int i) const
+		{
+			return corners[i];
+		}
 	};
 
-    Mesh();
-    Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris);
-    Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris, const QVector<Normal>& normals);
-    Mesh(const Mesh& mesh);
+	Mesh();
+	Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris);
+	Mesh(const QVector<Vertex>& vertices, const QVector<Tri>& tris, const QVector<Normal>& normals);
+	Mesh(const Mesh& mesh);
 
-    virtual ~Mesh();
+	virtual ~Mesh();
 
-    void SetType(Type type);
-    Type GetType() const;
+	void SetType(Type type);
+	Type GetType() const;
 
-    void Fill(ParticleSystem& particles, int particleCount, float h, float targetDensity, int materialPreset);
+	void Fill(ParticleSystem& particles, int particleCount, float h, float targetDensity, int materialPreset);
 
-    bool IsEmpty() const;
-    void Clear();
+	bool IsEmpty() const;
+	void Clear();
 
-    void ApplyTransformation(const glm::mat4& transform);
+	void ApplyTransformation(const glm::mat4& transform);
 
-    void Append(const Mesh& mesh);
+	void Append(const Mesh& mesh);
 
-    void ComputeNormals();
+	void ComputeNormals();
 
-    void SetName(const QString& name);
-    QString GetName() const;
+	void SetName(const QString& name);
+	QString GetName() const;
 
-    void SetFileName(const QString& fileName);
-    QString GetFileName() const;
+	void SetFileName(const QString& fileName);
+	QString GetFileName() const;
 
-    void SetVertices(const QVector<Vertex>& vertices);
-    void AddVertex(const Vertex& vertex);
-    int GetNumVertices() const;
-    Vertex& GetVertex(int i);
-    Vertex GetVertex(int i) const;
-    QVector<Vertex>& GetVertices();
-    const QVector<Vertex>& GetVertices() const;
+	void SetVertices(const QVector<Vertex>& vertices);
+	void AddVertex(const Vertex& vertex);
+	int GetNumVertices() const;
+	Vertex& GetVertex(int i);
+	Vertex GetVertex(int i) const;
+	QVector<Vertex>& GetVertices();
+	const QVector<Vertex>& GetVertices() const;
 
-    void SetTris(const QVector<Tri>& tris);
-    void AddTri(const Tri& tri);
-    int GetNumTris() const;
-    Tri& GetTri(int i);
-    Tri GetTri(int i) const;
-    QVector<Tri>& GetTris();
-    const QVector<Tri>& GetTris() const;
+	void SetTris(const QVector<Tri>& tris);
+	void AddTri(const Tri& tri);
+	int GetNumTris() const;
+	Tri& GetTri(int i);
+	Tri GetTri(int i) const;
+	QVector<Tri>& GetTris();
+	const QVector<Tri>& GetTris() const;
 
-    void SetNormals(const QVector<Normal>& normals);
-    void AddNormal(const Normal& normal);
-    int GetNumNormals() const;
-    Normal& GetNormal(int i);
-    Normal GetNormal(int i) const;
-    QVector<Normal>& GetNormals();
-    const QVector<Normal>& GetNormals() const;
+	void SetNormals(const QVector<Normal>& normals);
+	void AddNormal(const Normal& normal);
+	int GetNumNormals() const;
+	Normal& GetNormal(int i);
+	Normal GetNormal(int i) const;
+	QVector<Normal>& GetNormals();
+	const QVector<Normal>& GetNormals() const;
 
-    void Render() override;
-    void RenderForPicker() override;
-    void RenderVelocityForPicker() override;
+	void Render() override;
+	void RenderForPicker() override;
+	void RenderVelocityForPicker() override;
 
-    void RenderVelocity(bool velTool) override;
+	void RenderVelocity(bool velTool) override;
 
-    void UpdateMeshVelocity() override;
+	void UpdateMeshVelocity() override;
 
-    BBox GetBBox(const glm::mat4& ctm) override;
-    Vector3 GetCentroid(const glm::mat4& ctm) override;
+	BBox GetBBox(const glm::mat4& ctm) override;
+	Vector3 GetCentroid(const glm::mat4& ctm) override;
 
-    BBox GetObjectBBox() const;
+	BBox GetObjectBBox() const;
 
 private:
-    bool HasVBO() const;
-    void BuildVBO();
-    void DeleteVBO();
+	bool HasVBO() const;
+	void BuildVBO();
+	void DeleteVBO();
 
-    void RenderVBO();
-    void RenderCenter() const;
-    void RenderArrow();
+	void RenderVBO();
+	void RenderCenter() const;
+	void RenderArrow();
 
-    bool HasVelocityVBO() const;
-    void BuildVelocityVBO();
-    void DeleteVelocityVBO();
+	bool HasVelocityVBO() const;
+	void BuildVelocityVBO();
+	void DeleteVelocityVBO();
 
-    void RenderVelocityVBO();
+	void RenderVelocityVBO();
 
 	QString m_name;
 	// The OBJ file source
