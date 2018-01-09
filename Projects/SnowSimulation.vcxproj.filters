@@ -130,13 +130,13 @@
     <CustomBuild Include="..\Sources\Simulation\Engine.h">
       <Filter>Sources\Simulation</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\Sources\UI\CollapsibleBox.h">
+      <Filter>Sources\UI</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generated\ui_MainWindow.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\UI\CollapsibleBox.h">
-      <Filter>Sources\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Common\Renderable.h">
       <Filter>Sources\Common</Filter>
