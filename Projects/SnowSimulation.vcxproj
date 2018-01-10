@@ -99,6 +99,7 @@
     <ClCompile Include="..\Sources\UI\CollapsibleBox.cpp" />
     <ClCompile Include="..\Sources\UI\InfoPanel.cpp" />
     <ClCompile Include="..\Sources\UI\MainWindow.cpp" />
+    <ClCompile Include="..\Sources\UI\Picker.cpp" />
     <ClCompile Include="..\Sources\UI\Tools\Tool.cpp" />
     <ClCompile Include="..\Sources\UI\UISettings.cpp" />
     <ClCompile Include="..\Sources\UI\UserInput.cpp" />
@@ -177,6 +178,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Generated\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB "-I." "-I.\..\Libraries\glew\include" "-I.\..\Sources" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtWidgets" "-I.\..\Generated\$(ConfigurationName)\." "-I.\..\Generated" "-I$(CUDA_PATH)\include"</Command>
     </CustomBuild>
     <ClInclude Include="..\Sources\UI\InfoPanel.h" />
+    <ClInclude Include="..\Sources\UI\Picker.h" />
     <ClInclude Include="..\Sources\UI\Tools\Tool.h" />
     <ClInclude Include="..\Sources\Viewport\Camera.h" />
     <ClInclude Include="..\Sources\Viewport\Viewport.h" />
