@@ -110,6 +110,9 @@
     <ClCompile Include="..\Sources\IO\SceneIO.cpp">
       <Filter>Sources\IO</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\InfoPanel.cpp">
+      <Filter>Sources\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\IO\SceneIO.h">
       <Filter>Sources\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\InfoPanel.h">
+      <Filter>Sources\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
