@@ -74,9 +74,6 @@
     <ClCompile Include="..\Sources\UI\Tools\Tool.cpp">
       <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\Viewport\Viewport.cpp">
       <Filter>Sources\Viewport</Filter>
     </ClCompile>
@@ -115,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\UI\Picker.cpp">
       <Filter>Sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\UI\Tools\SelectionTool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\UI\Picker.h">
       <Filter>Sources\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\SelectionTool.h">
+      <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
