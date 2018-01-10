@@ -28,6 +28,7 @@ protected:
 	Viewport* m_viewport;
 
 	friend class Tool;
+	friend class SelectionTool;
 };
 
 #endif
