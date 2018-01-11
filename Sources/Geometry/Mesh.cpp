@@ -317,477 +317,477 @@ const QVector<Normal>& Mesh::GetNormals() const
 
 void Mesh::Render()
 {
-    if (!HasVBO())
-    {
-        BuildVBO();
-    }
+	if (!HasVBO())
+	{
+		BuildVBO();
+	}
 
-    if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
-    {
+	if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
+	{
 
-        glPushAttrib(GL_DEPTH_TEST);
-        glEnable(GL_DEPTH_TEST);
+		glPushAttrib(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
 
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
-        glPushAttrib(GL_COLOR_BUFFER_BIT);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glPushAttrib(GL_COLOR_BUFFER_BIT);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        glm::vec4 color = (m_selected) ? glm::mix(m_color, UISettings::selectionColor(), 0.5f) : m_color;
+		glm::vec4 color = (m_selected) ? glm::mix(m_color, UISettings::selectionColor(), 0.5f) : m_color;
 
-        if ((m_type == Type::SNOW_CONTAINER) ?
-            (UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID) || UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)) :
-            (UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID) || UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)))
-        {
-            glPushAttrib(GL_LIGHTING_BIT);
-            glEnable(GL_LIGHTING);
-            glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(color*0.2f));
-            glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(color));
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            
-            RenderVBO();
-            
-            glPopAttrib();
-        }
+		if ((m_type == Type::SNOW_CONTAINER) ?
+			(UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID) || UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)) :
+			(UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID) || UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)))
+		{
+			glPushAttrib(GL_LIGHTING_BIT);
+			glEnable(GL_LIGHTING);
+			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(color*0.2f));
+			glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(color));
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			
+			RenderVBO();
+			
+			glPopAttrib();
+		}
 
-        if ((m_type == Type::SNOW_CONTAINER) ?
-            (UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::WIREFRAME) || UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)) :
-            (UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::WIREFRAME) || UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)))
-        {
-            glPushAttrib(GL_POLYGON_BIT);
-            glEnable(GL_POLYGON_OFFSET_LINE);
-            glPolygonOffset(-1.f, -1.f);
-            glPushAttrib(GL_LIGHTING_BIT);
-            glDisable(GL_LIGHTING);
-            glLineWidth(1.f);
-            glColor4fv(glm::value_ptr(color*0.8f));
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-            
-            RenderVBO();
-            
-            glPopAttrib();
-            glPopAttrib();
-        }
+		if ((m_type == Type::SNOW_CONTAINER) ?
+			(UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::WIREFRAME) || UISettings::showContainersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)) :
+			(UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::WIREFRAME) || UISettings::showCollidersMode() == static_cast<int>(UISettings::MeshMode::SOLID_AND_WIREFRAME)))
+		{
+			glPushAttrib(GL_POLYGON_BIT);
+			glEnable(GL_POLYGON_OFFSET_LINE);
+			glPolygonOffset(-1.f, -1.f);
+			glPushAttrib(GL_LIGHTING_BIT);
+			glDisable(GL_LIGHTING);
+			glLineWidth(1.f);
+			glColor4fv(glm::value_ptr(color*0.8f));
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			
+			RenderVBO();
+			
+			glPopAttrib();
+			glPopAttrib();
+		}
 
-        glPopAttrib();
-        glPopAttrib();
-    }
+		glPopAttrib();
+		glPopAttrib();
+	}
 }
 
 void Mesh::RenderForPicker()
 {
-    if (!HasVBO())
-    {
-        BuildVBO();
-    }
+	if (!HasVBO())
+	{
+		BuildVBO();
+	}
 
-    if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
-    {
-        glPushAttrib(GL_DEPTH_TEST);
-        glEnable(GL_DEPTH_TEST);
-        glPushAttrib(GL_LIGHTING_BIT);
-        glDisable(GL_LIGHTING);
-        glColor3f(1.f, 1.f, 1.f);
-        
-        RenderVBO();
-        
-        glPopAttrib();
-        glPopAttrib();
-    }
+	if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
+	{
+		glPushAttrib(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
+		glPushAttrib(GL_LIGHTING_BIT);
+		glDisable(GL_LIGHTING);
+		glColor3f(1.f, 1.f, 1.f);
+		
+		RenderVBO();
+		
+		glPopAttrib();
+		glPopAttrib();
+	}
 }
 
 void Mesh::RenderVelocityForPicker()
 {
-    if (!HasVelocityVBO())
-    {
-        BuildVelocityVBO();
-    }
+	if (!HasVelocityVBO())
+	{
+		BuildVelocityVBO();
+	}
 
-    if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
-    {
-        glMatrixMode(GL_MODELVIEW);
-        glPushMatrix();
-        
-        glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(GetCentroid(glm::mat4(1.f))));
-        glMultMatrixf(glm::value_ptr(translate));
+	if ((m_type == Type::SNOW_CONTAINER) ? UISettings::showContainers() : UISettings::showColliders())
+	{
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		
+		glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(GetCentroid(glm::mat4(1.f))));
+		glMultMatrixf(glm::value_ptr(translate));
 
-        glPushAttrib(GL_DEPTH_TEST);
-        glEnable(GL_DEPTH_TEST);
-        glPushAttrib(GL_LIGHTING_BIT);
-        glDisable(GL_LIGHTING);
-        glColor3f(1.f, 1.f, 1.f);
+		glPushAttrib(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
+		glPushAttrib(GL_LIGHTING_BIT);
+		glDisable(GL_LIGHTING);
+		glColor3f(1.f, 1.f, 1.f);
 
-        if (!IsEqual(m_VelocityMagnitude, 0.0f))
-        {
-            RenderVelocityVBO();
-        }
+		if (!IsEqual(m_VelocityMagnitude, 0.0f))
+		{
+			RenderVelocityVBO();
+		}
 
-        glPopAttrib();
-        glPopAttrib();
+		glPopAttrib();
+		glPopAttrib();
 
-        glPopMatrix();
-    }
+		glPopMatrix();
+	}
 }
 
 void Mesh::RenderVelocity(bool velTool)
 {
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 
-    glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(GetCentroid(glm::mat4(1.f))));
-    glMultMatrixf(glm::value_ptr(translate));
+	glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(GetCentroid(glm::mat4(1.f))));
+	glMultMatrixf(glm::value_ptr(translate));
 
-    glPushAttrib(GL_DEPTH_TEST);
-    glEnable(GL_DEPTH_TEST);
+	glPushAttrib(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 
-    glEnable(GL_LINE_SMOOTH);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
-    glPushAttrib(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glPushAttrib(GL_COLOR_BUFFER_BIT);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glm::vec4 color = glm::vec4(.9, .9, .9, 1.0f);
-    glColor4fv(glm::value_ptr(color));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(color * 0.2f));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(color));
+	glm::vec4 color = glm::vec4(.9, .9, .9, 1.0f);
+	glColor4fv(glm::value_ptr(color));
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(color * 0.2f));
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(color));
 
-    if (!HasVelocityVBO())
-    {
-        BuildVelocityVBO();
-    }
+	if (!HasVelocityVBO())
+	{
+		BuildVelocityVBO();
+	}
 
-    if (velTool)
-    {
-        glPushAttrib(GL_DEPTH_BUFFER_BIT);
-        glDisable(GL_DEPTH_TEST);
-        glPushAttrib(GL_LIGHTING_BIT);
-        glDisable(GL_LIGHTING);
-        glPushAttrib(GL_COLOR_BUFFER_BIT);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-    }
+	if (velTool)
+	{
+		glPushAttrib(GL_DEPTH_BUFFER_BIT);
+		glDisable(GL_DEPTH_TEST);
+		glPushAttrib(GL_LIGHTING_BIT);
+		glDisable(GL_LIGHTING);
+		glPushAttrib(GL_COLOR_BUFFER_BIT);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_LINE_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	}
 
-    RenderVelocityVBO();
+	RenderVelocityVBO();
 
-    if (velTool)
-    {
-        glPopAttrib();
-        glPopAttrib();
-        glPopAttrib();
-    }
+	if (velTool)
+	{
+		glPopAttrib();
+		glPopAttrib();
+		glPopAttrib();
+	}
 
-    glPopMatrix();
+	glPopMatrix();
 }
 
 void Mesh::UpdateMeshVelocity()
 {
-    DeleteVelocityVBO();
+	DeleteVelocityVBO();
 }
 
 BBox Mesh::GetBBox(const glm::mat4& ctm)
 {
-    BBox box;
+	BBox box;
 
-    for (int i = 0; i < GetNumVertices(); ++i)
-    {
-        const Vertex& v = m_vertices[i];
-        glm::vec4 point = ctm * glm::vec4(glm::vec3(v), 1.f);
+	for (int i = 0; i < GetNumVertices(); ++i)
+	{
+		const Vertex& v = m_vertices[i];
+		glm::vec4 point = ctm * glm::vec4(glm::vec3(v), 1.f);
 
-        box += Vector3(point.x, point.y, point.z);
-    }
+		box += Vector3(point.x, point.y, point.z);
+	}
 
-    return box;
+	return box;
 }
 
 Vector3 Mesh::GetCentroid(const glm::mat4& ctm)
 {
-    Vector3 c(0, 0, 0);
+	Vector3 c(0, 0, 0);
 
-    for (int i = 0; i < GetNumVertices(); ++i)
-    {
-        const Vertex& v = m_vertices[i];
-        glm::vec4 point = ctm * glm::vec4(glm::vec3(v), 1.f);
+	for (int i = 0; i < GetNumVertices(); ++i)
+	{
+		const Vertex& v = m_vertices[i];
+		glm::vec4 point = ctm * glm::vec4(glm::vec3(v), 1.f);
 
-        c += Vector3(point.x, point.y, point.z);
-    }
-    return c / static_cast<float>(GetNumVertices());
+		c += Vector3(point.x, point.y, point.z);
+	}
+	return c / static_cast<float>(GetNumVertices());
 }
 
 BBox Mesh::GetObjectBBox() const
 {
-    BBox box;
+	BBox box;
 
-    for (int i = 0; i < GetNumVertices(); ++i)
-    {
-        box += m_vertices[i];
-    }
+	for (int i = 0; i < GetNumVertices(); ++i)
+	{
+		box += m_vertices[i];
+	}
 
-    return box;
+	return box;
 }
 
 bool Mesh::HasVBO() const
 {
-    bool has = false;
+	bool has = false;
 
-    if (m_glVBO > 0)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
-        has = glIsBuffer(m_glVBO);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-    }
+	if (m_glVBO > 0)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
+		has = glIsBuffer(m_glVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
 
-    return has;
+	return has;
 }
 
 void Mesh::BuildVBO()
 {
-    DeleteVBO();
+	DeleteVBO();
 
-    // Create flat array of non-indexed triangles
-    Vector3* data = new Vector3[6 * GetNumTris()];
-    for (int i = 0, index = 0; i < GetNumTris(); ++i)
-    {
-        const Tri& tri = m_tris[i];
-        data[index++] = m_vertices[tri[0]];
-        data[index++] = m_normals[tri[0]];
-        data[index++] = m_vertices[tri[1]];
-        data[index++] = m_normals[tri[1]];
-        data[index++] = m_vertices[tri[2]];
-        data[index++] = m_normals[tri[2]];
-    }
+	// Create flat array of non-indexed triangles
+	Vector3* data = new Vector3[6 * GetNumTris()];
+	for (int i = 0, index = 0; i < GetNumTris(); ++i)
+	{
+		const Tri& tri = m_tris[i];
+		data[index++] = m_vertices[tri[0]];
+		data[index++] = m_normals[tri[0]];
+		data[index++] = m_vertices[tri[1]];
+		data[index++] = m_normals[tri[1]];
+		data[index++] = m_vertices[tri[2]];
+		data[index++] = m_normals[tri[2]];
+	}
 
-    // Build OpenGL VBO
-    glGenBuffers(1, &m_glVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
-    glBufferData(GL_ARRAY_BUFFER, 6 * GetNumTris() * sizeof(Vector3), data, GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+	// Build OpenGL VBO
+	glGenBuffers(1, &m_glVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
+	glBufferData(GL_ARRAY_BUFFER, 6 * GetNumTris() * sizeof(Vector3), data, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    // Register with CUDA
-    RegisterVBO(&m_cudaVBO, m_glVBO);
+	// Register with CUDA
+	RegisterVBO(&m_cudaVBO, m_glVBO);
 
-    delete[] data;
+	delete[] data;
 }
 
 void Mesh::DeleteVBO()
 {
-    if (m_glVBO > 0)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
-        
-        if (glIsBuffer(m_glVBO))
-        {
-            UnregisterVBO(m_cudaVBO);
-            glDeleteBuffers(1, &m_glVBO);
-        }
+	if (m_glVBO > 0)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
+		
+		if (glIsBuffer(m_glVBO))
+		{
+			UnregisterVBO(m_cudaVBO);
+			glDeleteBuffers(1, &m_glVBO);
+		}
 
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        m_glVBO = 0;
-    }
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		m_glVBO = 0;
+	}
 }
 
 void Mesh::RenderVBO()
 {
-    glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(3, GL_FLOAT, 2 * sizeof(Vector3), static_cast<void*>(nullptr));
-    glEnableClientState(GL_NORMAL_ARRAY);
-    glNormalPointer(GL_FLOAT, 2 * sizeof(Vector3), reinterpret_cast<void*>(sizeof(Vector3)));
+	glBindBuffer(GL_ARRAY_BUFFER, m_glVBO);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 2 * sizeof(Vector3), static_cast<void*>(nullptr));
+	glEnableClientState(GL_NORMAL_ARRAY);
+	glNormalPointer(GL_FLOAT, 2 * sizeof(Vector3), reinterpret_cast<void*>(sizeof(Vector3)));
 
-    glDrawArrays(GL_TRIANGLES, 0, 3 * GetNumTris());
+	glDrawArrays(GL_TRIANGLES, 0, 3 * GetNumTris());
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glDisableClientState(GL_VERTEX_ARRAY);
-    glDisableClientState(GL_NORMAL_ARRAY);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 }
 
 void Mesh::RenderCenter() const
 {
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    
-    glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(0));
-    glMultMatrixf(glm::value_ptr(translate));
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	
+	glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(0));
+	glMultMatrixf(glm::value_ptr(translate));
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(3, GL_FLOAT, sizeof(Vector3), static_cast<void*>(nullptr));
-    glDrawArrays(GL_QUADS, m_velVBOSize - 24, 24);
-    glDisableClientState(GL_VERTEX_ARRAY);
+	glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, sizeof(Vector3), static_cast<void*>(nullptr));
+	glDrawArrays(GL_QUADS, m_velVBOSize - 24, 24);
+	glDisableClientState(GL_VERTEX_ARRAY);
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glPopMatrix();
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glPopMatrix();
 }
 
 void Mesh::RenderArrow()
 {
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 
-    Vector3 v = (this->GetCentroid(glm::mat4(1.f)));
-    glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(v));
+	Vector3 v = (this->GetCentroid(glm::mat4(1.f)));
+	glm::mat4 translate = glm::translate(glm::mat4(1.f), glm::vec3(v));
 
-    glm::mat4 basis = glm::orientation(m_velocityVector, glm::vec3(0, 1, 0));
-    glMultMatrixf(glm::value_ptr(translate * basis));
+	glm::mat4 basis = glm::orientation(m_velocityVector, glm::vec3(0, 1, 0));
+	glMultMatrixf(glm::value_ptr(translate * basis));
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(3, GL_FLOAT, sizeof(Vector3), static_cast<void*>(nullptr));
-    glLineWidth(2.f);
-    glDrawArrays(GL_LINES, 0, 2);
-    glDrawArrays(GL_TRIANGLES, 2, m_velVBOSize - (2 + 24));
-    glDisableClientState(GL_VERTEX_ARRAY);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glPopMatrix();
+	glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, sizeof(Vector3), static_cast<void*>(nullptr));
+	glLineWidth(2.f);
+	glDrawArrays(GL_LINES, 0, 2);
+	glDrawArrays(GL_TRIANGLES, 2, m_velVBOSize - (2 + 24));
+	glDisableClientState(GL_VERTEX_ARRAY);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glPopMatrix();
 }
 
 bool Mesh::HasVelocityVBO() const
 {
-    bool has = false;
+	bool has = false;
 
-    if (m_velocityVBO > 0)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
-        has = glIsBuffer(m_velocityVBO);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-    }
+	if (m_velocityVBO > 0)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
+		has = glIsBuffer(m_velocityVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
 
-    return has;
+	return has;
 }
 
 void Mesh::BuildVelocityVBO()
 {
-    float scaleFactor = 4;
-    QVector<Vector3> data;
-    glm::vec3 pos(0);
+	float scaleFactor = 4;
+	QVector<Vector3> data;
+	glm::vec3 pos(0);
 
-    DeleteVBO();
-    
-    // Axis
-    data += Vector3(pos.x, pos.y, pos.z);
-    data += Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor, pos.z);
+	DeleteVBO();
+	
+	// Axis
+	data += Vector3(pos.x, pos.y, pos.z);
+	data += Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor, pos.z);
 
-    // Cone
-    if (m_VelocityMagnitude != 0)
-    {
-        static const int resolution = 60;
-        static const float dTheta = 2.f * M_PI / resolution;
-        static const float coneHeight = 0.1f * scaleFactor;
-        static const float coneRadius = 0.05f * scaleFactor;
+	// Cone
+	if (m_VelocityMagnitude != 0)
+	{
+		static const int resolution = 60;
+		static const float dTheta = 2.f * M_PI / resolution;
+		static const float coneHeight = 0.1f * scaleFactor;
+		static const float coneRadius = 0.05f * scaleFactor;
 
-        for (int i = 0; i < resolution; ++i)
-        {
-            float upsideUp = 1;
-            
-            if (m_VelocityMagnitude < 0)
-            {
-                upsideUp = -1;
-            }
+		for (int i = 0; i < resolution; ++i)
+		{
+			float upsideUp = 1;
+			
+			if (m_VelocityMagnitude < 0)
+			{
+				upsideUp = -1;
+			}
 
-            data += Vector3(pos.x, m_VelocityMagnitude * scaleFactor, pos.z);
+			data += Vector3(pos.x, m_VelocityMagnitude * scaleFactor, pos.z);
 
-            float theta0 = i * dTheta;
-            float theta1 = (i + 1) * dTheta;
+			float theta0 = i * dTheta;
+			float theta1 = (i + 1) * dTheta;
 
-            data += (Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor - (upsideUp*coneHeight), pos.z) + coneRadius * Vector3(cosf(theta0), 0, -sinf(theta0)));
-            data += (Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor - (upsideUp*coneHeight), pos.z) + coneRadius * Vector3(cosf(theta1), 0, -sinf(theta1)));
-        }
-    }
+			data += (Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor - (upsideUp*coneHeight), pos.z) + coneRadius * Vector3(cosf(theta0), 0, -sinf(theta0)));
+			data += (Vector3(pos.x, pos.y + m_VelocityMagnitude * scaleFactor - (upsideUp*coneHeight), pos.z) + coneRadius * Vector3(cosf(theta1), 0, -sinf(theta1)));
+		}
+	}
 
-    // Cube
-    static const float s = 0.05f;
-    data += Vector3(-s, s, -s);
-    data += Vector3(-s, -s, -s);
-    data += Vector3(-s, -s, s);
-    data += Vector3(-s, s, s);
-    data += Vector3(s, s, s);
-    data += Vector3(s, -s, s);
-    data += Vector3(s, -s, -s);
-    data += Vector3(s, s, -s);
-    data += Vector3(-s, s, s);
-    data += Vector3(-s, -s, s);
-    data += Vector3(s, -s, s);
-    data += Vector3(s, s, s);
-    data += Vector3(s, s, -s);
-    data += Vector3(s, -s, -s);
-    data += Vector3(-s, -s, -s);
-    data += Vector3(-s, s, -s);
-    data += Vector3(-s, s, -s);
-    data += Vector3(-s, s, s);
-    data += Vector3(s, s, s);
-    data += Vector3(s, s, -s);
-    data += Vector3(s, s, -s);
-    data += Vector3(s, s, s);
-    data += Vector3(-s, s, s);
-    data += Vector3(-s, s, -s);
+	// Cube
+	static const float s = 0.05f;
+	data += Vector3(-s, s, -s);
+	data += Vector3(-s, -s, -s);
+	data += Vector3(-s, -s, s);
+	data += Vector3(-s, s, s);
+	data += Vector3(s, s, s);
+	data += Vector3(s, -s, s);
+	data += Vector3(s, -s, -s);
+	data += Vector3(s, s, -s);
+	data += Vector3(-s, s, s);
+	data += Vector3(-s, -s, s);
+	data += Vector3(s, -s, s);
+	data += Vector3(s, s, s);
+	data += Vector3(s, s, -s);
+	data += Vector3(s, -s, -s);
+	data += Vector3(-s, -s, -s);
+	data += Vector3(-s, s, -s);
+	data += Vector3(-s, s, -s);
+	data += Vector3(-s, s, s);
+	data += Vector3(s, s, s);
+	data += Vector3(s, s, -s);
+	data += Vector3(s, s, -s);
+	data += Vector3(s, s, s);
+	data += Vector3(-s, s, s);
+	data += Vector3(-s, s, -s);
 
-    glGenBuffers(1, &m_velocityVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
-    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vector3), data.data(), GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glGenBuffers(1, &m_velocityVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
+	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vector3), data.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    m_velVBOSize = data.size();
+	m_velVBOSize = data.size();
 }
 
 void Mesh::DeleteVelocityVBO()
 {
-    if (m_velocityVBO > 0)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
+	if (m_velocityVBO > 0)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_velocityVBO);
 
-        if (glIsBuffer(m_velocityVBO))
-        {
-            glDeleteBuffers(1, &m_velocityVBO);
-        }
+		if (glIsBuffer(m_velocityVBO))
+		{
+			glDeleteBuffers(1, &m_velocityVBO);
+		}
 
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        m_velocityVBO = 0;
-    }
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		m_velocityVBO = 0;
+	}
 }
 
 void Mesh::RenderVelocityVBO()
 {
-    float scaleConstant = .01;
-    
-    if (!HasVBO())
-    {
-        BuildVBO();
-    }
+	float scaleConstant = .01;
+	
+	if (!HasVBO())
+	{
+		BuildVBO();
+	}
 
-    glPushAttrib(GL_DEPTH_BUFFER_BIT);
-    glDisable(GL_DEPTH_TEST);
-    glPushAttrib(GL_LIGHTING_BIT);
-    glDisable(GL_LIGHTING);
-    glPushAttrib(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_LINE_SMOOTH);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glPushAttrib(GL_DEPTH_BUFFER_BIT);
+	glDisable(GL_DEPTH_TEST);
+	glPushAttrib(GL_LIGHTING_BIT);
+	glDisable(GL_LIGHTING);
+	glPushAttrib(GL_COLOR_BUFFER_BIT);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
-    glm::vec3 scaleVec;
-    scaleVec.x = 1.0f / glm::length(glm::vec3(m_ctm[0][0], m_ctm[1][0], m_ctm[2][0]));
-    scaleVec.y = 1.0f / glm::length(glm::vec3(m_ctm[0][1], m_ctm[1][1], m_ctm[2][1]));
-    scaleVec.z = 1.0f / glm::length(glm::vec3(m_ctm[0][2], m_ctm[1][2], m_ctm[2][2]));
-    
-    glPushMatrix();
-    
-    glm::mat4 transform = glm::scale(glm::mat4(), scaleVec);
-    transform = glm::scale(transform, glm::vec3(scaleConstant, scaleConstant, scaleConstant));
+	glm::vec3 scaleVec;
+	scaleVec.x = 1.0f / glm::length(glm::vec3(m_ctm[0][0], m_ctm[1][0], m_ctm[2][0]));
+	scaleVec.y = 1.0f / glm::length(glm::vec3(m_ctm[0][1], m_ctm[1][1], m_ctm[2][1]));
+	scaleVec.z = 1.0f / glm::length(glm::vec3(m_ctm[0][2], m_ctm[1][2], m_ctm[2][2]));
+	
+	glPushMatrix();
+	
+	glm::mat4 transform = glm::scale(glm::mat4(), scaleVec);
+	transform = glm::scale(transform, glm::vec3(scaleConstant, scaleConstant, scaleConstant));
 
-    glMultMatrixf(glm::value_ptr(transform));
-    glLineWidth(4);
-    
-    RenderArrow();
-    
-    glLineWidth(1);
-    glPopMatrix();
-    
-    glPopAttrib();
-    glPopAttrib();
-    glPopAttrib();
+	glMultMatrixf(glm::value_ptr(transform));
+	glLineWidth(4);
+	
+	RenderArrow();
+	
+	glLineWidth(1);
+	glPopMatrix();
+	
+	glPopAttrib();
+	glPopAttrib();
+	glPopAttrib();
 }
