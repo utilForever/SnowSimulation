@@ -122,6 +122,15 @@
     <ClCompile Include="..\Sources\UI\Tools\RotateTool.cpp">
       <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\Tools\ScaleTool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Release\moc_ViewPanel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -253,6 +262,9 @@
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\UI\Tools\RotateTool.h">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\ScaleTool.h">
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
   </ItemGroup>
