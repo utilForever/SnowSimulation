@@ -34,6 +34,7 @@ protected:
 	friend class SelectionTool;
 	friend class MoveTool;
 	friend class RotateTool;
+	friend class ScaleTool;
 };
 
 #endif
