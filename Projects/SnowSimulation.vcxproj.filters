@@ -116,6 +116,12 @@
     <ClCompile Include="..\Sources\UI\Tools\SelectionTool.cpp">
       <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\UI\Tools\MoveTool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\UI\Tools\RotateTool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -244,6 +250,9 @@
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\UI\Tools\MoveTool.h">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\RotateTool.h">
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
   </ItemGroup>
