@@ -110,8 +110,8 @@ void VelocityTool::MouseMoved()
 				float t0, t1;
 				glm::vec3 velVec = (*iter)->GetRenderable()->GetVelocityVector();
 				
-				t0 = IntersectVelVec(p0, velVec);
-				t1 = IntersectVelVec(p1, velVec);
+				t0 = IntersectVelocityVector(p0, velVec);
+				t1 = IntersectVelocityVector(p1, velVec);
 				(*iter)->GetRenderable()->SetVelocityMagnitude((*iter)->GetRenderable()->GetVelocityMagnitude() + (t1 - t0) * scaleFactor);
 				(*iter)->GetRenderable()->UpdateMeshVelocity();
 				
