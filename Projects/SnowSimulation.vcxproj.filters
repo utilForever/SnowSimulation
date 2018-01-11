@@ -243,6 +243,9 @@
     <ClInclude Include="..\Sources\UI\Tools\SelectionTool.h">
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\MoveTool.h">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
