@@ -33,6 +33,7 @@ protected:
 	friend class Tool;
 	friend class SelectionTool;
 	friend class MoveTool;
+	friend class RotateTool;
 };
 
 #endif
