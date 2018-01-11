@@ -10,6 +10,7 @@
 #define SNOW_SIMULATION_VIEW_PANEL_H
 
 class Viewport;
+class Scene;
 
 #include <QGLWidget>
 
@@ -27,8 +28,11 @@ public:
 protected:
 	Viewport* m_viewport;
 
+	Scene* m_scene;
+
 	friend class Tool;
 	friend class SelectionTool;
+	friend class MoveTool;
 };
 
 #endif
