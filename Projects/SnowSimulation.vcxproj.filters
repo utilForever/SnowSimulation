@@ -125,11 +125,8 @@
     <ClCompile Include="..\Sources\UI\Tools\ScaleTool.cpp">
       <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generated\Release\moc_ViewPanel.cpp">
-      <Filter>Generated Files</Filter>
+    <ClCompile Include="..\Sources\UI\Tools\VelocityTool.cpp">
+      <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +262,9 @@
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\UI\Tools\ScaleTool.h">
+      <Filter>Sources\UI\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Tools\VelocityTool.h">
       <Filter>Sources\UI\Tools</Filter>
     </ClInclude>
   </ItemGroup>
