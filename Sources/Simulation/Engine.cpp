@@ -17,6 +17,8 @@
 #include <Simulation/ParticleSystem.h>
 #include <UI/UISettings.h>
 
+#include <Windows.h>
+
 #include <GL/gl.h>
 
 #include <cuda.h>
