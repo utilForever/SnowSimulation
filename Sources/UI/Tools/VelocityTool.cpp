@@ -92,7 +92,6 @@ void VelocityTool::MouseMoved()
 
 				(*iter)->GetRenderable()->RotateVelocity(transform, ctm);
 				(*iter)->GetRenderable()->UpdateMeshVelocity();
-				m_panel->CheckSelected();
 			}
 		}
 	}
@@ -114,8 +113,6 @@ void VelocityTool::MouseMoved()
 				t1 = IntersectVelocityVector(p1, velVec);
 				(*iter)->GetRenderable()->SetVelocityMagnitude((*iter)->GetRenderable()->GetVelocityMagnitude() + (t1 - t0) * scaleFactor);
 				(*iter)->GetRenderable()->UpdateMeshVelocity();
-				
-				m_panel->CheckSelected();
 			}
 		}
 	}
