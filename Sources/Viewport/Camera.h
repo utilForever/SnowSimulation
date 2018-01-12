@@ -14,7 +14,7 @@
 #endif
 
 #define _USE_MATH_DEFINES
-#include <cmath>
+#include <math.h>
 
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
@@ -109,10 +109,10 @@ public:
 		return m_far;
 	}
 
-	void SetClip(float near, float far)
+	void SetClip(float _near, float _far)
 	{
-		m_near = near;
-		m_far = far;
+		m_near = _near;
+		m_far = _far;
 		UpdateProjectionMatrix();
 	}
 
