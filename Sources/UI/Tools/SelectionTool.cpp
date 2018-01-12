@@ -65,8 +65,6 @@ void SelectionTool::MouseReleased()
         
         Tool::MouseReleased();
     }
-
-    m_panel->CheckSelected();
 }
 
 void SelectionTool::Update()
