@@ -31,7 +31,7 @@ public:
 	};
 
 	Tool(ViewPanel* panel, Type t);
-	virtual ~Tool();
+	virtual ~Tool() = default;
 
 	virtual void MousePressed();
 	virtual void MouseMoved();
