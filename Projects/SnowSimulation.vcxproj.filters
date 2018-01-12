@@ -128,12 +128,6 @@
     <ClCompile Include="..\Sources\UI\Tools\VelocityTool.cpp">
       <Filter>Sources\UI\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_ViewPanel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
