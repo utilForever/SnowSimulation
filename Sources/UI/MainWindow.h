@@ -28,7 +28,7 @@ public slots:
 	void ImportMesh();
 	void AddCollider();
 
-	void SetVelText(bool b, float f, float x, float y, float z);
+	void SetVelocityText(bool b, float f, float x, float y, float z);
 	void SetSelectionText(QString s, bool b, int i);
 
 	void StartSimulation();
