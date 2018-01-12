@@ -32,80 +32,81 @@ struct MitsubaExporter;
 
 class Engine : public QObject, public Renderable
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    Engine();
-    virtual ~Engine();
+	Engine();
+	virtual ~Engine();
 
-    // Returns whether it actually did start
-    bool Start(bool exportVolume);
-    void Pause();
-    void Resume();
-    void Stop();
-    void Reset();
+	// Returns whether it actually did start
+	bool Start(bool exportVolume);
+	void Pause();
+	void Resume();
+	void Stop();
+	void Reset();
 
-    float GetSimulationTime();
+	float GetSimulationTime();
 
-    void AddParticleSystem(const ParticleSystem& particles);
-    ParticleSystem* GetParticleSystem();
-    void ClearParticleSystem();
+	void AddParticleSystem(const ParticleSystem& particles);
+	ParticleSystem* GetParticleSystem();
+	void ClearParticleSystem();
 
-    void SetGrid(const Grid& grid);
-    Grid GetGrid();
-    void ClearParticleGrid();
+	void SetGrid(const Grid& grid);
+	Grid GetGrid();
+	void ClearParticleGrid();
 
-    void AddCollider(const ColliderType& t, const Vector3& center, const Vector3& param, const Vector3& velocity);
-    QVector<ImplicitCollider>& GetColliders();
-    void ClearColliders();
+	void AddCollider(const ImplicitCollider& collider);
+	void AddCollider(const ColliderType& t, const Vector3& center, const Vector3& param, const Vector3& velocity);
+	QVector<ImplicitCollider>& GetColliders();
+	void ClearColliders();
 
-    void InitExporter(QString fPrefix);
+	void InitExporter(QString fPrefix);
 
-    bool IsRunning();
+	bool IsRunning();
 
-    void Render() override;
+	void Render() override;
 
-    BBox GetBBox(const glm::mat4& ctm) override;
-    Vector3 GetCentroid(const glm::mat4& ctm) override;
+	BBox GetBBox(const glm::mat4& ctm) override;
+	Vector3 GetCentroid(const glm::mat4& ctm) override;
 
 public slots:
-    void Update();
+	void Update();
 
 private:
-    QTimer m_ticker;
+	QTimer m_ticker;
 
-    // CPU data structures
-    ParticleSystem* m_particleSystem;
-    ParticleGrid* m_particleGrid;
-    Grid m_grid;
-    QVector<ImplicitCollider> m_colliders;
+	// CPU data structures
+	ParticleSystem* m_particleSystem;
+	ParticleGrid* m_particleGrid;
+	Grid m_grid;
+	QVector<ImplicitCollider> m_colliders;
 
-    // CUDA pointers
-    // Particles
-    cudaGraphicsResource* m_particlesResource; 
-    // Particle grid nodes
-    cudaGraphicsResource* m_nodesResource;
-    Grid* m_devGrid;
+	// CUDA pointers
+	// Particles
+	cudaGraphicsResource* m_particlesResource; 
+	// Particle grid nodes
+	cudaGraphicsResource* m_nodesResource;
+	Grid* m_devGrid;
 
-    NodeCache* m_devNodeCaches;
+	NodeCache* m_devNodeCaches;
 
-    ParticleCache* m_hostParticleCache;
-    ParticleCache* m_devParticleCache;
+	ParticleCache* m_hostParticleCache;
+	ParticleCache* m_devParticleCache;
 
-    ImplicitCollider* m_devColliders;
-    Material* m_devMaterial;
+	ImplicitCollider* m_devColliders;
+	Material* m_devMaterial;
 
-    float m_time;
+	float m_time;
 
-    bool m_busy;
-    bool m_running;
-    bool m_paused;
-    bool m_export;
+	bool m_busy;
+	bool m_running;
+	bool m_paused;
+	bool m_export;
 
-    MitsubaExporter* m_exporter;
+	MitsubaExporter* m_exporter;
 
-    void InitializeCUDAResources();
-    void FreeCUDAResources();
+	void InitializeCUDAResources();
+	void FreeCUDAResources();
 };
 
 #endif
