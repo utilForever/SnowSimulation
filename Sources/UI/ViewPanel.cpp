@@ -27,6 +27,10 @@
 #include <UI/UISettings.h>
 #include <UI/UserInput.h>
 #include <UI/ViewPanel.h>
+#include <UI/Tools/MoveTool.h>
+#include <UI/Tools/RotateTool.h>
+#include <UI/Tools/ScaleTool.h>
+#include <UI/Tools/SelectionTool.h>
 #include <UI/Tools/VelocityTool.h>
 #include <Viewport/Viewport.h>
 
@@ -409,13 +413,6 @@ void ViewPanel::LoadMesh(const QString& fileName)
 	}
 
 	m_tool->Update();
-
-	CheckSelected();
-	
-	if (!UISettings::showContainers())
-	{
-		emit ShowMeshes();
-	}
 }
 
 void ViewPanel::AddCollider(int colliderType)
@@ -450,313 +447,328 @@ void ViewPanel::AddCollider(int colliderType)
 	sceneCollider->SetSelected(true);
 
 	m_tool->Update();
-	CheckSelected();
 }
 
-//void ViewPanel::setTool(int tool)
-//{
-//    SAFE_DELETE(m_tool);
-//    Tool::Type t = (Tool::Type)tool;
-//    switch (t) {
-//    case Tool::SELECTION:
-//        m_tool = new SelectionTool(this, t);
-//        break;
-//    case Tool::MOVE:
-//        m_tool = new MoveTool(this, t);
-//        break;
-//    case Tool::ROTATE:
-//        m_tool = new RotateTool(this, t);
-//        break;
-//    case Tool::SCALE:
-//        m_tool = new ScaleTool(this, t);
-//        break;
-//    case Tool::VELOCITY:
-//        m_tool = new VelocityTool(this, t);
-//        break;
-//    }
-//    if (m_tool) m_tool->update();
-//    update();
-//}
-//
-//void ViewPanel::updateSceneGrid()
-//{
-//    m_scene->updateSceneGrid();
-//    if (m_tool) m_tool->update();
-//    update();
-//}
-//
-//void
-//ViewPanel::clearSelection()
-//{
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable()) {
-//            (*it)->getRenderable()->setSelected(false);
-//        }
-//    }
-//    checkSelected();
-//}
-//
-//void ViewPanel::fillSelectedMesh()
-//{
-//    Mesh *mesh = new Mesh;
-//    glm::vec3 currentVel;
-//    float currentMag;
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable() &&
-//            (*it)->getType() == SceneNode::SNOW_CONTAINER &&
-//            (*it)->getRenderable()->isSelected()) {
-//
-//            Mesh *original = dynamic_cast<Mesh*>((*it)->getRenderable());
-//            Mesh *copy = new Mesh(*original);
-//            const glm::mat4 transformation = (*it)->getCTM();
-//            copy->applyTransformation(transformation);
-//            mesh->append(*copy);
-//            delete copy;
-//
-//            currentVel = (*it)->getRenderable()->getWorldVelVec(transformation);
-//            currentMag = (*it)->getRenderable()->getVelMag();
-//            if (EQ(0, currentMag)) {
-//                currentVel = vec3(0, 0, 0);
-//            }
-//            else {
-//                currentVel = vec3(currentVel.x, currentVel.y, currentVel.z);
-//            }
-//        }
-//    }
-//
-//    // If there's a selection, do mesh->fill...
-//    if (!mesh->isEmpty()) {
-//
-//        makeCurrent();
-//
-//        ParticleSystem *particles = new ParticleSystem;
-//        particles->setVelMag(currentMag);
-//        particles->setVelVec(currentVel);
-//        //        mesh->fill( *particles, UiSettings::fillNumParticles(), UiSettings::fillResolution(), UiSettings::fillDensity() );
-//        mesh->fill(*particles, UiSettings::fillNumParticles(), UiSettings::fillResolution(), UiSettings::fillDensity(), UiSettings::materialPreset());
-//        particles->setVelocity();
-//        m_engine->addParticleSystem(*particles);
-//        delete particles;
-//
-//        m_infoPanel->setInfo("Particles", QString::number(m_engine->particleSystem()->size()));
-//    }
-//
-//    delete mesh;
-//
-//    if (!UiSettings::showParticles()) emit showParticles();
-//}
-//
-//void
-//ViewPanel::saveSelectedMesh()
-//{
-//    QList<Mesh*> meshes;
-//
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable() &&
-//            (*it)->getType() == SceneNode::SNOW_CONTAINER &&
-//            (*it)->getRenderable()->isSelected()) {
-//            Mesh *copy = new Mesh(*dynamic_cast<Mesh*>((*it)->getRenderable()));
-//            copy->applyTransformation((*it)->getCTM());
-//            meshes += copy;
-//        }
-//    }
-//
-//    // If there's a mesh selection, save it
-//    if (!meshes.empty()) {
-//        QString filename = QFileDialog::getSaveFileName(this, "Choose mesh file destination.", PROJECT_PATH "/data/models/");
-//        if (!filename.isNull()) {
-//            if (OBJParser::save(filename, meshes)) {
-//                for (int i = 0; i < meshes.size(); ++i)
-//                    delete meshes[i];
-//                meshes.clear();
-//                LOG("Mesh saved to %s", STR(filename));
-//            }
-//        }
-//    }
-//
-//
-//}
-//
-//void
-//ViewPanel::openScene()
-//{
-//    pauseDrawing();
-//    // call file dialog
-//    QString filename = QFileDialog::getOpenFileName(this, "Choose Scene File Path", PROJECT_PATH "/data/scenes/");
-//    if (!filename.isNull()) m_sceneIO->read(filename, m_scene, m_engine);
-//    else LOG("could not open file \n");
-//    resumeDrawing();
-//}
-//
-//void
-//ViewPanel::saveScene()
-//{
-//    pauseDrawing();
-//    // this is enforced if engine->start is called and export is not checked
-//    if (m_sceneIO->sceneFile().isNull()) {
-//        // filename not initialized yet
-//        QString filename = QFileDialog::getSaveFileName(this, "Choose Scene File Path", PROJECT_PATH "/data/scenes/");
-//        if (!filename.isNull()) {
-//            m_sceneIO->setSceneFile(filename);
-//            m_sceneIO->write(m_scene, m_engine);
-//        }
-//        else {
-//            QMessageBox::warning(this, "Error", "Invalid file path");
-//        }
-//    }
-//    else {
-//        m_sceneIO->write(m_scene, m_engine);
-//    }
-//    resumeDrawing();
-//}
-//
-//void ViewPanel::zeroVelOfSelected() {
-//    if (!m_selected) return;
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable() &&
-//            (*it)->getType() != SceneNode::SIMULATION_GRID &&
-//            (*it)->getRenderable()->isSelected()) {
-//            (*it)->getRenderable()->setVelMag(0.0f);
-//            (*it)->getRenderable()->setVelVec(glm::vec3(0, 0, 0));
-//            (*it)->getRenderable()->updateMeshVel();
-//        }
-//    }
-//    checkSelected();
-//}
-//
-//void ViewPanel::giveVelToSelected() {
-//    if (!m_selected) return;
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable() &&
-//            (*it)->getType() != SceneNode::SIMULATION_GRID &&
-//            (*it)->getRenderable()->isSelected()) {
-//            (*it)->getRenderable()->setVelMag(1.0f);
-//            (*it)->getRenderable()->setVelVec(glm::vec3(0, 1, 0));
-//            (*it)->getRenderable()->updateMeshVel();
-//        }
-//    }
-//    checkSelected();
-//}
-//
-//void ViewPanel::checkSelected() {
-//    int counter = 0;
-//    for (SceneNodeIterator it = m_scene->begin(); it.isValid(); ++it) {
-//        if ((*it)->hasRenderable() && (*it)->getRenderable()->isSelected()) {
-//            counter++;
-//            m_selected = (*it);
-//        }
-//    }
-//    if (counter == 0) {
-//        emit changeVel(false);
-//        emit changeSelection("Currently Selected: none", false);
-//        m_selected = NULL;
-//    }
-//    else if (counter == 1 && m_selected->getType() != SceneNode::SIMULATION_GRID) {
-//        glm::vec3 v;// = glm::vec3(m_selected->getRenderable()->getVelVec());
-//                    //       glm::vec4 vWorld = m_selected->getCTM()*glm::vec4((v),1);
-//                    //       float mag = glm::length(v);
-//        if EQ(m_selected->getRenderable()->getVelMag(), 0)
-//        {
-//            emit changeVel(true, m_selected->getRenderable()->getVelMag(), 0, 0, 0);
-//        }
-//        else
-//        {
-//            //           v = glm::normalize(glm::vec3(vWorld.x,vWorld.y,vWorld.z));
-//            v = m_selected->getRenderable()->getWorldVelVec(m_selected->getCTM());
-//            emit changeVel(true, m_selected->getRenderable()->getVelMag(), v.x, v.y, v.z);
-//        }
-//        emit changeSelection("Currently Selected: ", true, m_selected->getType());
-//    }
-//    else if (counter == 1 && m_selected->getType() == SceneNode::SIMULATION_GRID) {
-//        emit changeVel(false);
-//        emit changeSelection("Currently Selected: Grid", false);
-//    }
-//    else {
-//        emit changeVel(false);
-//        emit changeSelection("Currently Selected: more than one object", false);
-//        m_selected = NULL;
-//    }
-//}
-//
-//// Paint grid on XZ plane to orient viewport
-//void
-//ViewPanel::paintGrid()
-//{
-//    if (!hasGridVBO()) buildGridVBO();
-//
-//    glPushAttrib(GL_COLOR_BUFFER_BIT);
-//    glEnable(GL_BLEND);
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//    glEnable(GL_LINE_SMOOTH);
-//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-//    glBindBuffer(GL_ARRAY_BUFFER, m_gridVBO);
-//    glEnableClientState(GL_VERTEX_ARRAY);
-//    glVertexPointer(3, GL_FLOAT, sizeof(vec3), (void*)(0));
-//    glColor4f(0.5f, 0.5f, 0.5f, 0.8f);
-//    glLineWidth(2.5f);
-//    glDrawArrays(GL_LINES, 0, 4);
-//    glColor4f(0.5f, 0.5f, 0.5f, 0.65f);
-//    glLineWidth(1.5f);
-//    glDrawArrays(GL_LINES, 4, m_majorSize - 4);
-//    glColor4f(0.5f, 0.5f, 0.5f, 0.5f);
-//    glLineWidth(0.5f);
-//    glDrawArrays(GL_LINES, m_majorSize, m_minorSize);
-//    glBindBuffer(GL_ARRAY_BUFFER, 0);
-//    glDisableClientState(GL_VERTEX_ARRAY);
-//    glEnd();
-//    glPopAttrib();
-//}
-//
-//bool
-//ViewPanel::hasGridVBO() const
-//{
-//    return m_gridVBO > 0 && glIsBuffer(m_gridVBO);
-//}
-//
-//void
-//ViewPanel::buildGridVBO()
-//{
-//    deleteGridVBO();
-//
-//    QVector<vec3> data;
-//
-//    static const int minorN = MAJOR_GRID_N * MAJOR_GRID_TICK / MINOR_GRID_TICK;
-//    static const float max = MAJOR_GRID_N * MAJOR_GRID_TICK;
-//    for (int i = 0; i <= MAJOR_GRID_N; ++i) {
-//        float x = MAJOR_GRID_TICK * i;
-//        data += vec3(x, 0.f, -max);
-//        data += vec3(x, 0.f, max);
-//        data += vec3(-max, 0.f, x);
-//        data += vec3(max, 0.f, x);
-//        if (i) {
-//            data += vec3(-x, 0.f, -max);
-//            data += vec3(-x, 0.f, max);
-//            data += vec3(-max, 0.f, -x);
-//            data += vec3(max, 0.f, -x);
-//        }
-//    }
-//    m_majorSize = data.size();
-//
-//    for (int i = -minorN; i <= minorN; ++i) {
-//        float x = MINOR_GRID_TICK * i;
-//        data += vec3(x, 0.f, -max);
-//        data += vec3(x, 0.f, max);
-//        data += vec3(-max, 0.f, x);
-//        data += vec3(max, 0.f, x);
-//    }
-//    m_minorSize = data.size() - m_majorSize;
-//
-//    glGenBuffers(1, &m_gridVBO);
-//    glBindBuffer(GL_ARRAY_BUFFER, m_gridVBO);
-//    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(vec3), data.data(), GL_STATIC_DRAW);
-//    glBindBuffer(GL_ARRAY_BUFFER, 0);
-//}
-//
-//void
-//ViewPanel::deleteGridVBO()
-//{
-//    if (hasGridVBO()) {
-//        glDeleteBuffers(1, &m_gridVBO);
-//    }
-//    m_gridVBO = 0;
-//}
+void ViewPanel::SetTool(int tool)
+{
+	if (m_tool != nullptr)
+	{
+		delete m_tool;
+		m_tool = nullptr;
+	}
+
+	Tool::Type t = static_cast<Tool::Type>(tool);
+	switch (t)
+	{
+	case Tool::Type::SELECTION:
+		m_tool = new SelectionTool(this, t);
+		break;
+	case Tool::Type::MOVE:
+		m_tool = new MoveTool(this, t);
+		break;
+	case Tool::Type::ROTATE:
+		m_tool = new RotateTool(this, t);
+		break;
+	case Tool::Type::SCALE:
+		m_tool = new ScaleTool(this, t);
+		break;
+	case Tool::Type::VELOCITY:
+		m_tool = new VelocityTool(this, t);
+		break;
+	}
+
+	if (m_tool)
+	{
+		m_tool->Update();
+	}
+
+	update();
+}
+
+void ViewPanel::UpdateSceneGrid()
+{
+	m_scene->UpdateSceneGrid();
+	
+	if (m_tool)
+	{
+		m_tool->Update();
+	}
+
+	update();
+}
+
+void ViewPanel::ClearSelection()
+{
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable())
+		{
+			(*iter)->GetRenderable()->SetSelected(false);
+		}
+	}
+}
+
+void ViewPanel::FillSelectedMesh()
+{
+	Mesh* mesh = new Mesh;
+	glm::vec3 currentVelocity;
+	float currentMagnitude = 0.0f;
+
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable() && (*iter)->GetType() == SceneNode::Type::SNOW_CONTAINER &&
+			(*iter)->GetRenderable()->GetSelected())
+		{
+			Mesh* original = dynamic_cast<Mesh*>((*iter)->GetRenderable());
+			Mesh* copy = new Mesh(*original);
+			const glm::mat4 transformation = (*iter)->GetCTM();
+			
+			copy->ApplyTransformation(transformation);
+			mesh->Append(*copy);
+			
+			delete copy;
+
+			currentVelocity = (*iter)->GetRenderable()->GetWorldVelocity(transformation);
+			currentMagnitude = (*iter)->GetRenderable()->GetVelocityMagnitude();
+			
+			if (IsEqual(0.0f, currentMagnitude))
+			{
+				currentVelocity = Vector3(0, 0, 0);
+			}
+			else
+			{
+				currentVelocity = Vector3(currentVelocity.x, currentVelocity.y, currentVelocity.z);
+			}
+		}
+	}
+
+	// If there's a selection, do mesh->fill...
+	if (!mesh->IsEmpty())
+	{
+		makeCurrent();
+
+		ParticleSystem* particles = new ParticleSystem;
+		particles->SetVelocityMagnitude(currentMagnitude);
+		particles->SetVelocityVector(currentVelocity);
+		
+		mesh->Fill(*particles, UISettings::fillNumParticles(), UISettings::fillResolution(), UISettings::fillDensity(), UISettings::materialPreset());
+		particles->SetVelocity();
+		m_engine->AddParticleSystem(*particles);
+		
+		delete particles;
+
+		m_infoPanel->SetInfo("Particles", QString::number(m_engine->GetParticleSystem()->Size()));
+	}
+
+	delete mesh;
+}
+
+void ViewPanel::SaveSelectedMesh()
+{
+	QList<Mesh*> meshes;
+
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable() && (*iter)->GetType() == SceneNode::Type::SNOW_CONTAINER &&
+			(*iter)->GetRenderable()->GetSelected())
+		{
+			Mesh* copy = new Mesh(*dynamic_cast<Mesh*>((*iter)->GetRenderable()));
+			copy->ApplyTransformation((*iter)->GetCTM());
+			meshes += copy;
+		}
+	}
+
+	// If there's a mesh selection, save it
+	if (!meshes.empty())
+	{
+		QString fileName = QFileDialog::getSaveFileName(this, "Choose mesh file destination.", "Datas/Models/");
+		if (!fileName.isNull())
+		{
+			if (ObjParser::Save(fileName, meshes))
+			{
+				for (int i = 0; i < meshes.size(); ++i)
+				{
+					delete meshes[i];
+				}
+
+				meshes.clear();
+				LOG("Mesh saved to %s", STR(fileName));
+			}
+		}
+	}
+}
+
+void ViewPanel::OpenScene()
+{
+	PauseDrawing();
+	
+	// Call file dialog
+	QString fileName = QFileDialog::getOpenFileName(this, "Choose Scene File Path", "Data/Scenes/");
+	if (!fileName.isNull())
+	{
+		m_sceneIO->Read(fileName, m_scene, m_engine);
+	}
+	else
+	{
+		LOG("could not open file \n");
+	}
+
+	ResumeDrawing();
+}
+
+void ViewPanel::SaveScene()
+{
+	PauseDrawing();
+
+	// this is enforced if engine->start is called and export is not checked
+	if (m_sceneIO->GetSceneFile().isNull())
+	{
+		// file name not initialized yet
+		QString fileName = QFileDialog::getSaveFileName(this, "Choose Scene File Path", "Datas/Scenes/");
+		if (!fileName.isNull())
+		{
+			m_sceneIO->SetSceneFile(fileName);
+			m_sceneIO->Write(m_scene, m_engine);
+		}
+		else
+		{
+			QMessageBox::warning(this, "Error", "Invalid file path");
+		}
+	}
+	else
+	{
+		m_sceneIO->Write(m_scene, m_engine);
+	}
+
+	ResumeDrawing();
+}
+
+void ViewPanel::ZeroVelocityOfSelected()
+{
+	if (!m_selected)
+	{
+		return;
+	}
+
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable() && (*iter)->GetType() != SceneNode::Type::SIMULATION_GRID &&
+			(*iter)->GetRenderable()->GetSelected())
+		{
+			(*iter)->GetRenderable()->SetVelocityMagnitude(0.0f);
+			(*iter)->GetRenderable()->SetVelocityVector(glm::vec3(0, 0, 0));
+			(*iter)->GetRenderable()->UpdateMeshVelocity();
+		}
+	}
+}
+
+void ViewPanel::GiveVelocityToSelected()
+{
+	if (!m_selected)
+	{
+		return;
+	}
+
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable() && (*iter)->GetType() != SceneNode::Type::SIMULATION_GRID &&
+			(*iter)->GetRenderable()->GetSelected())
+		{
+			(*iter)->GetRenderable()->SetVelocityMagnitude(1.0f);
+			(*iter)->GetRenderable()->SetVelocityVector(glm::vec3(0, 1, 0));
+			(*iter)->GetRenderable()->UpdateMeshVelocity();
+		}
+	}
+}
+
+// Paint grid on XZ plane to orient viewport
+void ViewPanel::PaintGrid()
+{
+	if (!HasGridVBO())
+	{
+		BuildGridVBO();
+	}
+
+	glPushAttrib(GL_COLOR_BUFFER_BIT);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glBindBuffer(GL_ARRAY_BUFFER, m_gridVBO);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, sizeof(Vector3), static_cast<void*>(nullptr));
+	glColor4f(0.5f, 0.5f, 0.5f, 0.8f);
+	glLineWidth(2.5f);
+	glDrawArrays(GL_LINES, 0, 4);
+	glColor4f(0.5f, 0.5f, 0.5f, 0.65f);
+	glLineWidth(1.5f);
+	glDrawArrays(GL_LINES, 4, m_majorSize - 4);
+	glColor4f(0.5f, 0.5f, 0.5f, 0.5f);
+	glLineWidth(0.5f);
+	glDrawArrays(GL_LINES, m_majorSize, m_minorSize);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glEnd();
+	glPopAttrib();
+}
+
+bool ViewPanel::HasGridVBO() const
+{
+	return m_gridVBO > 0 && glIsBuffer(m_gridVBO);
+}
+
+void ViewPanel::BuildGridVBO()
+{
+	DeleteGridVBO();
+
+	QVector<Vector3> data;
+
+	static const int minorN = MAJOR_GRID_N * MAJOR_GRID_TICK / MINOR_GRID_TICK;
+	static const float max = MAJOR_GRID_N * MAJOR_GRID_TICK;
+
+	for (int i = 0; i <= MAJOR_GRID_N; ++i)
+	{
+		float x = MAJOR_GRID_TICK * i;
+		data += Vector3(x, 0.f, -max);
+		data += Vector3(x, 0.f, max);
+		data += Vector3(-max, 0.f, x);
+		data += Vector3(max, 0.f, x);
+		
+		if (i)
+		{
+			data += Vector3(-x, 0.f, -max);
+			data += Vector3(-x, 0.f, max);
+			data += Vector3(-max, 0.f, -x);
+			data += Vector3(max, 0.f, -x);
+		}
+	}
+
+	m_majorSize = data.size();
+
+	for (int i = -minorN; i <= minorN; ++i)
+	{
+		float x = MINOR_GRID_TICK * i;
+
+		data += Vector3(x, 0.f, -max);
+		data += Vector3(x, 0.f, max);
+		data += Vector3(-max, 0.f, x);
+		data += Vector3(max, 0.f, x);
+	}
+
+	m_minorSize = data.size() - m_majorSize;
+
+	glGenBuffers(1, &m_gridVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_gridVBO);
+	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(Vector3), data.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void ViewPanel::DeleteGridVBO()
+{
+	if (HasGridVBO())
+	{
+		glDeleteBuffers(1, &m_gridVBO);
+	}
+
+	m_gridVBO = 0;
+}
