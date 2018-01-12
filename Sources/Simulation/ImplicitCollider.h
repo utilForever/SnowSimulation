@@ -81,14 +81,18 @@ struct ImplicitCollider
 		switch (type)
 		{
 		case ColliderType::HALF_PLANE:
+		{
 			glm::vec4 n = ctm * glm::vec4(glm::vec3(0, 1, 0), 0.f);
 			param = Vector3(n.x, n.y, n.z);
 			break;
+		}
 		case ColliderType::SPHERE:
+		{
 			const float* m = glm::value_ptr(ctm);
 			// Assumes uniform scale
 			param.x = sqrtf(m[0] * m[0] + m[1] * m[1] + m[2] * m[2]);
 			break;
+		}
 		}
 	}
 };
