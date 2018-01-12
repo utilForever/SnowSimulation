@@ -66,7 +66,7 @@ bool SceneIO::Read(QString fileName, Scene* scene, Engine* engine)
 	ApplyColliders(scene, engine);
 }
 
-bool SceneIO::Write(Scene* scene, Engine* engine)
+void SceneIO::Write(Scene* scene, Engine* engine)
 {
 	m_document.clear();
 	QDomProcessingInstruction processInstruct = m_document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"utf-8\" ");

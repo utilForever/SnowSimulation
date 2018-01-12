@@ -31,7 +31,7 @@ public:
 	SceneIO();
 
 	bool Read(QString fileName, Scene* scene, Engine* engine);
-	bool Write(Scene* scene, Engine* engine);
+	void Write(Scene* scene, Engine* engine);
 
 	QString GetSceneFile();
 	void SetSceneFile(QString fileName);
