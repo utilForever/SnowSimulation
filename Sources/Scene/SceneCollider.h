@@ -26,7 +26,7 @@ public:
 	void RenderVelocityForPicker() override;
 	void UpdateMeshVelocity() override;
 
-	static constexpr float GetSphereRadius();
+	static float GetSphereRadius();
 
 	BBox GetBBox(const glm::mat4& ctm) override;
 	Vector3 GetCentroid(const glm::mat4& ctm) override;

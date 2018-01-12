@@ -51,7 +51,7 @@ void SceneCollider::UpdateMeshVelocity()
 	m_mesh->UpdateMeshVelocity();
 }
 
-constexpr float SceneCollider::GetSphereRadius()
+float SceneCollider::GetSphereRadius()
 {
 	return .01f;
 }
