@@ -128,7 +128,7 @@ void Scene::DeleteSelectedNodes()
 	}
 }
 
-void Scene::LoadMesh(const QString& fileName, glm::mat4 ctm = glm::mat4())
+void Scene::LoadMesh(const QString& fileName, glm::mat4 ctm)
 {
 	QList<Mesh*> meshes;
 	ObjParser::Load(fileName, meshes);
