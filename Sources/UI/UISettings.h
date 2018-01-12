@@ -83,8 +83,8 @@ public:
 	static Grid BuildGrid(const glm::mat4& ctm);
 
 protected:
-	UISettings();
-	virtual ~UISettings();
+	UISettings() = default;
+	virtual ~UISettings() = default;
 
 private:
 	static UISettings* m_instance;
