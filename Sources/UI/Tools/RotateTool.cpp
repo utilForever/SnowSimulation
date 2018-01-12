@@ -85,7 +85,6 @@ void RotateTool::MouseMoved()
 				(*iter)->GetType() != SceneNode::Type::SIMULATION_GRID)
 			{
 				(*iter)->ApplyTransformation(transform);
-				m_panel->CheckSelected();
 			}
 		}
 	}
