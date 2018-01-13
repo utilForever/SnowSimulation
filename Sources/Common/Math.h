@@ -11,7 +11,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <cstdlib>
 #include <limits>
 #include <random>
 
@@ -36,16 +35,35 @@ static float UniformRandom(float min = 0.f, float max = 1.f)
     return dis(gen);
 }
 
+// TODO: Delete this code after CUDA 9 supports VS 15.5
+inline float Clamp(float value, float a, float b)
+{
+    return (value < a) ? a : ((value > b) ? b : value);
+}
+
 static float SmoothStep(float value, float edge0, float edge1)
 {
-    float x = std::clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
+    float x = Clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
     return x * x * (3 - 2 * x);
 }
 
 static float SmootherStep(float value, float edge0, float edge1)
 {
-    float x = std::clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
+    float x = Clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
     return x * x * x * (x * (6 * x - 15) + 10);
 }
+
+// TODO: Uncomment this code after CUDA 9 support VS 15.5
+//static float SmoothStep(float value, float edge0, float edge1)
+//{
+//    float x = std::clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
+//    return x * x * (3 - 2 * x);
+//}
+//
+//static float SmootherStep(float value, float edge0, float edge1)
+//{
+//    float x = std::clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
+//    return x * x * x * (x * (6 * x - 15) + 10);
+//}
 
 #endif
