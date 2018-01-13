@@ -315,4 +315,9 @@
       <Filter>Resources</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Sources\CUDA\Snow.cu">
+      <Filter>Sources\CUDA</Filter>
+    </None>
+  </ItemGroup>
 </Project>
