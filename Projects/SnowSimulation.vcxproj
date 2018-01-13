@@ -171,6 +171,7 @@
     <ClInclude Include="..\Sources\Common\Renderable.h" />
     <ClInclude Include="..\Sources\Common\Util.h" />
     <ClInclude Include="..\Sources\CUDA\Atomic.h" />
+    <ClInclude Include="..\Sources\CUDA\Collider.h" />
     <ClInclude Include="..\Sources\CUDA\Functions.h" />
     <ClInclude Include="..\Sources\CUDA\Matrix.h" />
     <ClInclude Include="..\Sources\CUDA\Quaternion.h" />
