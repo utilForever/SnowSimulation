@@ -26,7 +26,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-constexpr float ZOOM_SCALE = 1.f;
+constexpr float ZOOM_SCALE = 3.f;
 
 Viewport::Viewport() : m_state(State::IDLE), m_width(1000), m_height(1000)
 {
