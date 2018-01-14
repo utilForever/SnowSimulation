@@ -9,6 +9,10 @@
 #ifndef SNOW_SIMULATION_MATH_H
 #define SNOW_SIMULATION_MATH_H
 
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <math.h>
+
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -36,17 +40,20 @@ static float UniformRandom(float min = 0.f, float max = 1.f)
 }
 
 // TODO: Delete this code after CUDA 9 supports VS 15.5
+__device__
 inline float Clamp(float value, float a, float b)
 {
     return (value < a) ? a : ((value > b) ? b : value);
 }
 
+__device__
 static float SmoothStep(float value, float edge0, float edge1)
 {
     float x = Clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
     return x * x * (3 - 2 * x);
 }
 
+__device__
 static float SmootherStep(float value, float edge0, float edge1)
 {
     float x = Clamp((value - edge0) / (edge1 - edge0), 0.f, 1.f);
