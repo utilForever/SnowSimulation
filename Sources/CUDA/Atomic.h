@@ -15,27 +15,28 @@
 
 #include <cuda.h>
 #include <cuda_runtime.h>
+#include <device_functions.h>
 
 __device__ __forceinline__
-void AtomicAdd(Vector3* add, const Vector3& toAdd)
+void atomicAdd(Vector3* add, const Vector3& toAdd)
 {
-    AtomicAdd(&(add->x), toAdd.x);
-    AtomicAdd(&(add->y), toAdd.y);
-    AtomicAdd(&(add->z), toAdd.z);
+    atomicAdd(&(add->x), toAdd.x);
+    atomicAdd(&(add->y), toAdd.y);
+    atomicAdd(&(add->z), toAdd.z);
 }
 
 __device__ __forceinline__
-void AtomicAdd(Vector3* add, const Matrix3& toAdd)
+void atomicAdd(Vector3* add, const Matrix3& toAdd)
 {
-    AtomicAdd(&(add->data[0]), toAdd[0]);
-    AtomicAdd(&(add->data[1]), toAdd[1]);
-    AtomicAdd(&(add->data[2]), toAdd[2]);
-    AtomicAdd(&(add->data[3]), toAdd[3]);
-    AtomicAdd(&(add->data[4]), toAdd[4]);
-    AtomicAdd(&(add->data[5]), toAdd[5]);
-    AtomicAdd(&(add->data[6]), toAdd[6]);
-    AtomicAdd(&(add->data[7]), toAdd[7]);
-    AtomicAdd(&(add->data[8]), toAdd[8]);
+    atomicAdd(&(add->data[0]), toAdd[0]);
+    atomicAdd(&(add->data[1]), toAdd[1]);
+    atomicAdd(&(add->data[2]), toAdd[2]);
+    atomicAdd(&(add->data[3]), toAdd[3]);
+    atomicAdd(&(add->data[4]), toAdd[4]);
+    atomicAdd(&(add->data[5]), toAdd[5]);
+    atomicAdd(&(add->data[6]), toAdd[6]);
+    atomicAdd(&(add->data[7]), toAdd[7]);
+    atomicAdd(&(add->data[8]), toAdd[8]);
 }
 
 #endif
