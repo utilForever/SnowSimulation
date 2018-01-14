@@ -20,6 +20,7 @@
 // will have 0 < d < 1, particles > 1 and < 2 grid cells away will
 // still get some weight, and any particles further than that get
 // weight = 0
+__host__ __device__ __forceinline__
 inline float GetN(float d)
 {
 	if (d >= 0 && d < 1)
@@ -59,6 +60,7 @@ float Weight(Vector3& dx)
 }
 
 // derivative of N with respect to d
+__host__ __device__ __forceinline__
 inline float GetNd(float d)
 {
 	if (d >= 0 && d < 1)
