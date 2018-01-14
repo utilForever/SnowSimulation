@@ -10,6 +10,8 @@
 #include <Scene/SceneCollider.h>
 #include <Scene/SceneNode.h>
 
+#include <Windows.h>
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 

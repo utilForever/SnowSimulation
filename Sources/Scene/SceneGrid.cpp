@@ -10,6 +10,8 @@
 #include <Scene/SCeneGrid.h>
 #include <UI/UISettings.h>
 
+#include <Windows.h>
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 

@@ -12,10 +12,12 @@
 #include <Common/Util.h>
 #include <CUDA/Functions.h>
 #include <Geometry/BBox.h>
-#include "geometry/grid.h"
+#include <Geometry/Grid.h>
 #include <Geometry/Mesh.h>
 #include <Simulation/ParticleSystem.h>
 #include <UI/UISettings.h>
+
+#include <Windows.h>
 
 #include <GL/glew.h>
 #include <GL/gl.h>

@@ -6,6 +6,8 @@
 > Created Time: 2018/01/11
 > Copyright (c) 2018, Chan-Ho Chris Ohk
 *************************************************************************/
+#include <Windows.h>
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 
