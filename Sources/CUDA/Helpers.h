@@ -12,7 +12,7 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-#define LAUNCH(...) { __VA_ARGS__; checkCudaErrors( cudaDeviceSynchronize() ); }
+#define LAUNCH(...) { __VA_ARGS__; cudaDeviceSynchronize(); }
 
 #define cudaMallocAndCopy(dst, src, size)                      \
 ({                                                             \
