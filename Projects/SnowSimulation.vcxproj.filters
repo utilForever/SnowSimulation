@@ -318,6 +318,9 @@
     <ClInclude Include="..\Sources\CUDA\Noise.h">
       <Filter>Sources\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\SnowTypes.h">
+      <Filter>Sources\CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
