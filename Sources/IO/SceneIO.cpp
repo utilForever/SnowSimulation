@@ -185,7 +185,7 @@ void SceneIO::ApplyParticleSystem(Scene* scene)
 			QDomElement d = p.childNodes().at(t).toElement();
 			QString name = d.attribute("name");
 			
-			if (name.compare("fileName") == 0)
+			if (name.compare("filename") == 0)
 			{
 				fileName = d.attribute("value");
 			}
