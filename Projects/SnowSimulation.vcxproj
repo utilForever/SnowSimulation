@@ -286,6 +286,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
+    <CudaCompile Include="..\Sources\CUDA\Simulation.cu" />
     <CudaCompile Include="..\Sources\CUDA\Snow.cu">
       <FileType>Document</FileType>
     </CudaCompile>

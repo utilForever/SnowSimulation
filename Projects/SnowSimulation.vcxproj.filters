@@ -338,4 +338,9 @@
       <Filter>Sources\CUDA</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="..\Sources\CUDA\Simulation.cu">
+      <Filter>Sources\CUDA</Filter>
+    </CudaCompile>
+  </ItemGroup>
 </Project>
