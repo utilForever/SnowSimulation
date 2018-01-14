@@ -312,6 +312,9 @@
     <ClInclude Include="..\Sources\CUDA\Weighting.h">
       <Filter>Sources\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Implicit.h">
+      <Filter>Sources\CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
