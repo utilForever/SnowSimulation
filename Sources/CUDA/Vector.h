@@ -202,13 +202,13 @@ struct Vector3
     __host__ __device__ __forceinline__
         static Vector3 Min(const Vector3& v, const Vector3& w)
     {
-        return Vector3(std::min(v.x, w.x), std::min(v.y, w.y), std::min(v.z, w.z));
+        return Vector3(::Min(v.x, w.x), ::Min(v.y, w.y), ::Min(v.z, w.z));
     }
 
     __host__ __device__ __forceinline__
         static Vector3 Max(const Vector3& v, const Vector3& w)
     {
-        return Vector3(std::max(v.x, w.x), std::max(v.y, w.y), std::max(v.z, w.z));
+        return Vector3(::Max(v.x, w.x), ::Max(v.y, w.y), ::Max(v.z, w.z));
     }
 
     __host__ __device__ __forceinline__

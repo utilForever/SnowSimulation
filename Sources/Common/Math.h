@@ -39,6 +39,18 @@ static float UniformRandom(float min = 0.f, float max = 1.f)
     return dis(gen);
 }
 
+__host__ __device__ __forceinline__
+inline float Min(float a, float b)
+{
+    return a < b ? a : b;
+}
+
+__host__ __device__ __forceinline__
+inline float Max(float a, float b)
+{
+    return a > b ? a : b;
+}
+
 // TODO: Delete this code after CUDA 9 supports VS 15.5
 __device__
 inline float Clamp(float value, float a, float b)
