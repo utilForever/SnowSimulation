@@ -75,6 +75,13 @@ public slots:
 
 	void ZeroVelocityOfSelected();
 	void GiveVelocityToSelected();
+    void CheckSelected();
+
+signals:
+	void ShowMeshes();
+	void ShowParticles();
+	void ChangeSelection(QString s, bool b, int i = 0);
+	void ChangeVelocity(bool b, float f = 0, float x = 0, float y = 0, float z = 0);
 
 protected:
 	void PaintGrid();

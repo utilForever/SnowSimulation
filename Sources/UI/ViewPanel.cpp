@@ -395,7 +395,6 @@ void ViewPanel::UpdateColliders(float timestep)
 
 void ViewPanel::LoadMesh(const QString& fileName)
 {
-
 	// single obj file is associated with multiple renderable and a single scene node.
 	QList<Mesh*> meshes;
 
@@ -415,6 +414,13 @@ void ViewPanel::LoadMesh(const QString& fileName)
 	}
 
 	m_tool->Update();
+
+	CheckSelected();
+
+	if (!UISettings::showContainers())
+	{
+		emit ShowMeshes();
+	}
 }
 
 void ViewPanel::AddCollider(int colliderType)
@@ -449,6 +455,8 @@ void ViewPanel::AddCollider(int colliderType)
 	sceneCollider->SetSelected(true);
 
 	m_tool->Update();
+
+	CheckSelected();
 }
 
 void ViewPanel::SetTool(int tool)
@@ -508,6 +516,8 @@ void ViewPanel::ClearSelection()
 			(*iter)->GetRenderable()->SetSelected(false);
 		}
 	}
+
+	CheckSelected();
 }
 
 void ViewPanel::FillSelectedMesh()
@@ -563,6 +573,11 @@ void ViewPanel::FillSelectedMesh()
 	}
 
 	delete mesh;
+
+	if (!UISettings::showParticles())
+	{
+		emit ShowParticles();
+	}
 }
 
 void ViewPanel::SaveSelectedMesh()
@@ -662,6 +677,8 @@ void ViewPanel::ZeroVelocityOfSelected()
 			(*iter)->GetRenderable()->UpdateMeshVelocity();
 		}
 	}
+
+	CheckSelected();
 }
 
 void ViewPanel::GiveVelocityToSelected()
@@ -680,6 +697,57 @@ void ViewPanel::GiveVelocityToSelected()
 			(*iter)->GetRenderable()->SetVelocityVector(glm::vec3(0, 1, 0));
 			(*iter)->GetRenderable()->UpdateMeshVelocity();
 		}
+	}
+
+	CheckSelected();
+}
+
+void ViewPanel::CheckSelected()
+{
+	int counter = 0;
+
+	for (SceneNodeIterator iter = m_scene->Begin(); iter.IsValid(); ++iter)
+	{
+		if ((*iter)->HasRenderable() && (*iter)->GetRenderable()->GetSelected())
+		{
+			counter++;
+			m_selected = (*iter);
+		}
+	}
+
+	if (counter == 0)
+	{
+		emit ChangeVelocity(false);
+		emit ChangeSelection("Currently Selected: none", false);
+		m_selected = nullptr;
+	}
+	else if (counter == 1 && m_selected->GetType() != SceneNode::Type::SIMULATION_GRID)
+	{
+		glm::vec3 v;
+
+		if (IsEqual(m_selected->GetRenderable()->GetVelocityMagnitude(), 0.0f))
+		{
+			emit ChangeVelocity(true, m_selected->GetRenderable()->GetVelocityMagnitude(), 0, 0, 0);
+		}
+		else
+		{
+			v = m_selected->GetRenderable()->GetWorldVelocity(m_selected->GetCTM());
+			emit ChangeVelocity(true, m_selected->GetRenderable()->GetVelocityMagnitude(), v.x, v.y, v.z);
+		}
+
+		emit ChangeSelection("Currently Selected: ", true, static_cast<int>(m_selected->GetType()));
+	}
+	else if (counter == 1 && m_selected->GetType() == SceneNode::Type::SIMULATION_GRID)
+	{
+		emit ChangeVelocity(false);
+		emit ChangeSelection("Currently Selected: Grid", false);
+	}
+	else
+	{
+		emit ChangeVelocity(false);
+		emit ChangeSelection("Currently Selected: more than one object", false);
+
+		m_selected = nullptr;
 	}
 }
 
