@@ -215,34 +215,34 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 
 void MainWindow::SetupUI()
 {
-	assert(connect(m_ui->actionSave_Mesh, SIGNAL(triggered()), m_ui->viewPanel, SLOT(saveSelectedMesh())));
-	assert(connect(m_ui->actionOpen_Scene, SIGNAL(triggered()), m_ui->viewPanel, SLOT(openScene())));
-	assert(connect(m_ui->actionSave_Scene, SIGNAL(triggered()), m_ui->viewPanel, SLOT(saveScene())));
+	assert(connect(m_ui->actionSave_Mesh, SIGNAL(triggered()), m_ui->viewPanel, SLOT(SaveSelectedMesh())));
+	assert(connect(m_ui->actionOpen_Scene, SIGNAL(triggered()), m_ui->viewPanel, SLOT(OpenScene())));
+	assert(connect(m_ui->actionSave_Scene, SIGNAL(triggered()), m_ui->viewPanel, SLOT(SaveScene())));
 
 	// Mesh Filling
-	assert(connect(m_ui->importButton, SIGNAL(clicked()), this, SLOT(importMesh())));
-	assert(connect(m_ui->fillButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(fillSelectedMesh())));
+	assert(connect(m_ui->importButton, SIGNAL(clicked()), this, SLOT(ImportMesh())));
+	assert(connect(m_ui->fillButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(FillSelectedMesh())));
 	FloatBinding::BindSpinBox(m_ui->fillResolutionSpinbox, UISettings::fillResolution(), this);
 	IntBinding::BindSpinBox(m_ui->fillNumParticlesSpinbox, UISettings::fillNumParticles(), this);
-	assert(connect(m_ui->fillNumParticlesSpinbox, SIGNAL(editingFinished()), this, SLOT(fillNumParticleFinishedEditing())));
+	assert(connect(m_ui->fillNumParticlesSpinbox, SIGNAL(editingFinished()), this, SLOT(FillNumParticleFinishedEditing())));
 	FloatBinding::BindSpinBox(m_ui->densitySpinbox, UISettings::fillDensity(), this);
 	ComboIntAttribute::BindInt(m_ui->snowMaterialCombo, &UISettings::materialPreset(), this);
-	assert(connect(m_ui->meshGiveVelocityButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(giveVelToSelected())));
-	assert(connect(m_ui->MeshZeroVelocityButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(zeroVelOfSelected())));
+	assert(connect(m_ui->meshGiveVelocityButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(GiveVelocityToSelected())));
+	assert(connect(m_ui->MeshZeroVelocityButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(ZeroVelocityOfSelected())));
 
 	// Simulation
-	assert(connect(m_ui->startButton, SIGNAL(clicked()), this, SLOT(startSimulation())));
-	assert(connect(m_ui->stopButton, SIGNAL(clicked()), this, SLOT(stopSimulation())));
-	assert(connect(m_ui->pauseButton, SIGNAL(toggled(bool)), m_ui->viewPanel, SLOT(pauseSimulation(bool))));
-	assert(connect(m_ui->resetButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(resetSimulation())));
+	assert(connect(m_ui->startButton, SIGNAL(clicked()), this, SLOT(StartSimulation())));
+	assert(connect(m_ui->stopButton, SIGNAL(clicked()), this, SLOT(StopSimulation())));
+	assert(connect(m_ui->pauseButton, SIGNAL(toggled(bool)), m_ui->viewPanel, SLOT(PauseSimulation(bool))));
+	assert(connect(m_ui->resetButton, SIGNAL(clicked()), m_ui->viewPanel, SLOT(ResetSimulation())));
 	IntBinding::BindSpinBox(m_ui->gridXSpinbox, UISettings::gridDimensions().x, this);
 	IntBinding::BindSpinBox(m_ui->gridYSpinbox, UISettings::gridDimensions().y, this);
 	IntBinding::BindSpinBox(m_ui->gridZSpinbox, UISettings::gridDimensions().z, this);
 	FloatBinding::BindSpinBox(m_ui->gridResolutionSpinbox, UISettings::gridResolution(), this);
-	assert(connect(m_ui->gridXSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(updateSceneGrid())));
-	assert(connect(m_ui->gridYSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(updateSceneGrid())));
-	assert(connect(m_ui->gridZSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(updateSceneGrid())));
-	assert(connect(m_ui->gridResolutionSpinbox, SIGNAL(valueChanged(double)), m_ui->viewPanel, SLOT(updateSceneGrid())));
+	assert(connect(m_ui->gridXSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(UpdateSceneGrid())));
+	assert(connect(m_ui->gridYSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(UpdateSceneGrid())));
+	assert(connect(m_ui->gridZSpinbox, SIGNAL(valueChanged(int)), m_ui->viewPanel, SLOT(UpdateSceneGrid())));
+	assert(connect(m_ui->gridResolutionSpinbox, SIGNAL(valueChanged(double)), m_ui->viewPanel, SLOT(UpdateSceneGrid())));
 	FloatBinding::BindSpinBox(m_ui->timeStepSpinbox, UISettings::timeStep(), this);
 	BoolBinding::BindCheckBox(m_ui->implicitCheckbox, UISettings::implicit(), this);
 
@@ -253,7 +253,7 @@ void MainWindow::SetupUI()
 	FloatBinding::BindSpinBox(m_ui->maxTimeSpinBox, UISettings::maxTime(), this);
 
 	// SceneCollider
-	assert(connect(m_ui->colliderAddButton, SIGNAL(clicked()), this, SLOT(addCollider())));
+	assert(connect(m_ui->colliderAddButton, SIGNAL(clicked()), this, SLOT(AddCollider())));
 
 	// View Panel
 	assert(connect(m_ui->showContainersCheckbox, SIGNAL(toggled(bool)), m_ui->showContainersCombo, SLOT(setEnabled(bool))));
@@ -261,8 +261,8 @@ void MainWindow::SetupUI()
 	assert(connect(m_ui->showGridCheckbox, SIGNAL(toggled(bool)), m_ui->showGridCombo, SLOT(setEnabled(bool))));
 	assert(connect(m_ui->showGridDataCheckbox, SIGNAL(toggled(bool)), m_ui->showGridDataCombo, SLOT(setEnabled(bool))));
 	assert(connect(m_ui->showParticlesCheckbox, SIGNAL(toggled(bool)), m_ui->showParticlesCombo, SLOT(setEnabled(bool))));
-	assert(connect(m_ui->viewPanel, SIGNAL(showParticles()), m_ui->showParticlesCheckbox, SLOT(click())));
-	assert(connect(m_ui->viewPanel, SIGNAL(showMeshes()), m_ui->showContainersCheckbox, SLOT(click())));
+	assert(connect(m_ui->viewPanel, SIGNAL(ShowParticles()), m_ui->showParticlesCheckbox, SLOT(click())));
+	assert(connect(m_ui->viewPanel, SIGNAL(ShowMeshes()), m_ui->showContainersCheckbox, SLOT(click())));
 	CheckboxBoolAttribute::BindBool(m_ui->showContainersCheckbox, &UISettings::showContainers(), this);
 	ComboIntAttribute::BindInt(m_ui->showContainersCombo, &UISettings::showContainersMode(), this);
 	CheckboxBoolAttribute::BindBool(m_ui->showCollidersCheckbox, &UISettings::showColliders(), this);
@@ -281,12 +281,12 @@ void MainWindow::SetupUI()
 	m_ui->toolButtonGroup->setId(m_ui->scaleToolButton, static_cast<int>(Tool::Type::SCALE));
 	m_ui->toolButtonGroup->addButton(m_ui->velocityToolButton);
 	m_ui->toolButtonGroup->setId(m_ui->velocityToolButton, static_cast<int>(Tool::Type::VELOCITY));
-	assert(connect(m_ui->toolButtonGroup, SIGNAL(buttonClicked(int)), m_ui->viewPanel, SLOT(setTool(int))));
+	assert(connect(m_ui->toolButtonGroup, SIGNAL(buttonClicked(int)), m_ui->viewPanel, SLOT(SetTool(int))));
 	m_ui->selectionToolButton->click();
 
 	// Selected Object
-	assert(connect(m_ui->viewPanel, SIGNAL(changeVel(bool, float, float, float, float)), this, SLOT(setVelText(bool, float, float, float, float))));
-	assert(connect(m_ui->viewPanel, SIGNAL(changeSelection(QString, bool, int)), this, SLOT(setSelectionText(QString, bool, int))));
+	assert(connect(m_ui->viewPanel, SIGNAL(ChangeVelocity(bool, float, float, float, float)), this, SLOT(SetVelocityText(bool, float, float, float, float))));
+	assert(connect(m_ui->viewPanel, SIGNAL(ChangeSelection(QString, bool, int)), this, SLOT(SetSelectionText(QString, bool, int))));
 
 	m_ui->toolGroupBox->Init();
 	m_ui->SelectedObjectGroupBox->Init();
