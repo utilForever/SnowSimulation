@@ -177,6 +177,7 @@
     <ClInclude Include="..\Sources\CUDA\Helpers.h" />
     <ClInclude Include="..\Sources\CUDA\Implicit.h" />
     <ClInclude Include="..\Sources\CUDA\Matrix.h" />
+    <ClInclude Include="..\Sources\CUDA\Noise.h" />
     <ClInclude Include="..\Sources\CUDA\Quaternion.h" />
     <ClInclude Include="..\Sources\CUDA\Vector.h" />
     <ClInclude Include="..\Sources\CUDA\Weighting.h" />

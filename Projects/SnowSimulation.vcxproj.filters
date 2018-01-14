@@ -315,6 +315,9 @@
     <ClInclude Include="..\Sources\CUDA\Implicit.h">
       <Filter>Sources\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\CUDA\Noise.h">
+      <Filter>Sources\CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\Icons\move.png">
@@ -334,13 +337,9 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Sources\CUDA\Snow.cu">
-      <Filter>Sources\CUDA</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <CudaCompile Include="..\Sources\CUDA\Simulation.cu">
       <Filter>Sources\CUDA</Filter>
     </CudaCompile>
+    <CudaCompile Include="..\Sources\CUDA\Snow.cu" />
   </ItemGroup>
 </Project>
