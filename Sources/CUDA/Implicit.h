@@ -270,7 +270,7 @@ void ComputedF(
         Vector3 dfJ = -particle.volume * Matrix3::MultiplyABT(particleCache->Aps[particleIdx], particle.elasticF) * wg;
 
         int gridIndex = Grid::GetGridIndex(ijk, grid->NodeDim());
-        AtomicAdd(&(nodeCaches[gridIndex].df), dfJ);
+        atomicAdd(&(nodeCaches[gridIndex].df), dfJ);
     }
 }
 
