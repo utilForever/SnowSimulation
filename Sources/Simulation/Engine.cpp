@@ -35,7 +35,7 @@ Engine::Engine() :
 
 	m_hostParticleCache = nullptr;
 
-	assert(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(update())));
+	assert(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(Update())));
 }
 
 Engine::~Engine()
@@ -152,7 +152,7 @@ float Engine::GetSimulationTime()
 	return m_time;
 }
 
-void Engine::AddParticleSystem(const ParticleSystem& particles)
+void Engine::AddParticleSystem(ParticleSystem& particles)
 {
 	QVector<Particle> parts = particles.GetParticles();
 	*m_particleSystem += particles;

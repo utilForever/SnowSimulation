@@ -47,7 +47,7 @@ public:
 
 	float GetSimulationTime();
 
-	void AddParticleSystem(const ParticleSystem& particles);
+	void AddParticleSystem(ParticleSystem& particles);
 	ParticleSystem* GetParticleSystem();
 	void ClearParticleSystem();
 
