@@ -146,16 +146,16 @@
     <ClCompile Include="..\Generated\Release\moc_CollapsibleBox.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Generated\Debug\moc_Engine.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generated\Release\moc_Engine.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Generated\Debug\moc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Generated\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Debug\moc_Engine.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generated\Release\moc_Engine.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,5 +344,8 @@
       <Filter>Sources\CUDA</Filter>
     </CudaCompile>
     <CudaCompile Include="..\Sources\CUDA\Snow.cu" />
+    <CudaCompile Include="..\Sources\CUDA\Mesh.cu">
+      <Filter>Sources\CUDA</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>
