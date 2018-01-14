@@ -26,7 +26,8 @@
 #include <functional>
 
 // IsColliding functions
-using IsCollidingFunc = std::function<bool(const ImplicitCollider& collider, const Vector3& position)>;
+// using IsCollidingFunc = std::function<bool(const ImplicitCollider& collider, const Vector3& position)>;
+typedef bool(*IsCollidingFunc)(const ImplicitCollider& collider, const Vector3& position);
 
 // A collision occurs when the point is on the OTHER side of the normal
 __device__
@@ -71,7 +72,8 @@ inline bool IsColliding(const ImplicitCollider& collider, const Vector3& positio
 // colliderNormal functions
 // Returns the (normalized) normal of the collider at the position.
 // Note: this function does NOT check that there is a collision at this point, and behavior is undefined if there is not.
-using ColliderNormalFunc = std::function<void(const ImplicitCollider& collider, const Vector3& position, Vector3& normal)>;
+// using ColliderNormalFunc = std::function<void(const ImplicitCollider& collider, const Vector3& position, Vector3& normal)>;
+typedef void(*ColliderNormalFunc)(const ImplicitCollider& collider, const Vector3& position, Vector3& normal);
 
 __device__
 inline void ColliderNormalSphere(const ImplicitCollider& collider, const Vector3& position, Vector3& normal)
