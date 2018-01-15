@@ -42,6 +42,12 @@
     <Filter Include="Sources\Scene">
       <UniqueIdentifier>{bab19287-b07c-4e76-be33-a505d508da54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Icons">
+      <UniqueIdentifier>{486c197e-12fd-41a3-ae67-891ca2d40ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{e593cad1-e8ea-46de-935c-9fd399deb7bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
@@ -158,6 +164,9 @@
     <ClCompile Include="..\Generated\Release\moc_Engine.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Generated\qrc_Shaders.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Sources\UI\MainWindow.h">
@@ -165,9 +174,6 @@
     </CustomBuild>
     <CustomBuild Include="..\Sources\UI\MainWindow.ui">
       <Filter>Sources\UI</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\Resources\Icons\Icons.qrc">
-      <Filter>Resources</Filter>
     </CustomBuild>
     <CustomBuild Include="..\Sources\UI\ViewPanel.h">
       <Filter>Sources\UI</Filter>
@@ -180,6 +186,12 @@
     </CustomBuild>
     <CustomBuild Include="..\Sources\UI\CollapsibleBox.h">
       <Filter>Sources\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Resources\Icons\Icons.qrc">
+      <Filter>Resources\Icons</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Resources\Shaders\Shaders.qrc">
+      <Filter>Resources\Shaders</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -323,20 +335,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\Icons\cursor.png">
+      <Filter>Resources\Icons</Filter>
+    </Image>
     <Image Include="..\Resources\Icons\move.png">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Icons</Filter>
     </Image>
     <Image Include="..\Resources\Icons\rotate.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="..\Resources\Icons\cursor.png">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Icons</Filter>
     </Image>
     <Image Include="..\Resources\Icons\scale.png">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Icons</Filter>
     </Image>
     <Image Include="..\Resources\Icons\velocity.png">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Icons</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -347,5 +359,19 @@
     <CudaCompile Include="..\Sources\CUDA\Mesh.cu">
       <Filter>Sources\CUDA</Filter>
     </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Shaders\ParticleGrid.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\ParticleGrid.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\ParticleSystem.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\ParticleSystem.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
