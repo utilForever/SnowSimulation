@@ -9,14 +9,14 @@
 #ifndef SNOW_SIMULATION_DATA_BINDING_H
 #define SNOW_SIMULATION_DATA_BINDING_H
 
+#include <Common/Util.h>
+
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QObject>
 #include <QSlider>
 #include <QSpinBox>
-
-#include <cassert>
 
 class IntBinding : public QObject
 {
@@ -33,7 +33,7 @@ public:
 		IntBinding* binding = new IntBinding(value, parent);
 		
 		spinBox->setValue(value);
-		assert(connect(spinBox, SIGNAL(valueChanged(int)), binding, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(spinBox, SIGNAL(valueChanged(int)), binding, SLOT(valueChanged(int))));
 		
 		return binding;
 	}
@@ -43,7 +43,7 @@ public:
 		IntBinding* binding = new IntBinding(value, parent);
 		
 		lineEdit->setText(QString::number(value));
-		assert(connect(lineEdit, SIGNAL(textChanged(QString)), binding, SLOT(valueChanged(QString))));
+		SNOW_ASSERT(connect(lineEdit, SIGNAL(textChanged(QString)), binding, SLOT(valueChanged(QString))));
 		
 		return binding;
 	}
@@ -53,7 +53,7 @@ public:
 		IntBinding* binding = new IntBinding(value, parent);
 		
 		slider->setValue(value);
-		assert(connect(slider, SIGNAL(valueChanged(int)), binding, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(slider, SIGNAL(valueChanged(int)), binding, SLOT(valueChanged(int))));
 		
 		return binding;
 	}
@@ -64,7 +64,7 @@ public:
 		
 		checkbox->setTristate(true);
 		checkbox->setCheckState(static_cast<Qt::CheckState>(value));
-		assert(connect(checkbox, SIGNAL(stateChanged(int)), binding, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(checkbox, SIGNAL(stateChanged(int)), binding, SLOT(valueChanged(int))));
 		
 		return binding;
 	}
@@ -105,7 +105,7 @@ public:
 		FloatBinding *binding = new FloatBinding(value, parent);
 		
 		spinbox->setValue(value);
-		assert(connect(spinbox, SIGNAL(valueChanged(double)), binding, SLOT(valueChanged(double))));
+		SNOW_ASSERT(connect(spinbox, SIGNAL(valueChanged(double)), binding, SLOT(valueChanged(double))));
 		
 		return binding;
 	}
@@ -115,7 +115,7 @@ public:
 		FloatBinding *binding = new FloatBinding(value, parent);
 		
 		lineEdit->setText(QString::number(value));
-		assert(connect(lineEdit, SIGNAL(textChanged(QString)), binding, SLOT(valueChanged(QString))));
+		SNOW_ASSERT(connect(lineEdit, SIGNAL(textChanged(QString)), binding, SLOT(valueChanged(QString))));
 		
 		return binding;
 	}
@@ -156,7 +156,7 @@ public:
 		BoolBinding *binding = new BoolBinding(value, parent);
 		
 		checkbox->setChecked(value);
-		assert(connect(checkbox, SIGNAL(toggled(bool)), binding, SLOT(valueChanged(bool))));
+		SNOW_ASSERT(connect(checkbox, SIGNAL(toggled(bool)), binding, SLOT(valueChanged(bool))));
 		
 		return binding;
 	}
@@ -189,8 +189,8 @@ public:
 		m_slider->setMaximum(max);
 		m_edit->setValidator(new QIntValidator(min, max, m_edit));
 		
-		assert(connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int))));
-		assert(connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(valueChanged(QString))));
+		SNOW_ASSERT(connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(valueChanged(QString))));
 	}
 
 	static SliderIntAttribute* BindInt(QSlider* slider, QLineEdit* edit, int min, int max, int* value, QObject* parent)
@@ -202,7 +202,7 @@ public:
 	{
 		SliderIntAttribute* attr = new SliderIntAttribute(slider, edit, min, max, nullptr, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
 		
 		return attr;
 	}
@@ -211,7 +211,7 @@ public:
 	{
 		SliderIntAttribute* attr = new SliderIntAttribute(slider, edit, min, max, value, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
 		
 		return attr;
 	}
@@ -271,8 +271,8 @@ public:
 		m_slider->setMaximum(int(1000 * (m_max - m_min) + 0.5f));
 		m_edit->setValidator(new QDoubleValidator(m_min, m_max, 3, m_edit));
 
-		assert(connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int))));
-		assert(connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(valueChanged(QString))));
+		SNOW_ASSERT(connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(valueChanged(QString))));
 	}
 
 	static SliderFloatAttribute* BindFloat(QSlider* slider, QLineEdit* edit, float min, float max, float* value, QObject* parent)
@@ -284,7 +284,7 @@ public:
 	{
 		SliderFloatAttribute* attr = new SliderFloatAttribute(slider, edit, min, max, nullptr, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(float)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(float)), object, slot));
 		
 		return attr;
 	}
@@ -293,7 +293,7 @@ public:
 	{
 		SliderFloatAttribute* attr = new SliderFloatAttribute(slider, edit, min, max, value, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(float)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(float)), object, slot));
 		
 		return attr;
 	}
@@ -368,7 +368,7 @@ public:
 			m_checkbox->click();
 		}
 
-		assert(connect(checkbox, SIGNAL(clicked(bool)), this, SLOT(valueChanged(bool))));
+		SNOW_ASSERT(connect(checkbox, SIGNAL(clicked(bool)), this, SLOT(valueChanged(bool))));
 	}
 
 	static CheckboxBoolAttribute* BindBool(QCheckBox* checkbox, bool* value, QObject* parent)
@@ -380,7 +380,7 @@ public:
 	{
 		CheckboxBoolAttribute* attr = new CheckboxBoolAttribute(checkbox, nullptr, object);
 		
-		assert(connect(attr, SIGNAL(attributedChanged(bool)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributedChanged(bool)), object, slot));
 		
 		return attr;
 	}
@@ -389,7 +389,7 @@ public:
 	{
 		CheckboxBoolAttribute* attr = new CheckboxBoolAttribute(checkbox, value, object);
 		
-		assert(connect(attr, SIGNAL(attributedChanged(bool)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributedChanged(bool)), object, slot));
 		
 		return attr;
 	}
@@ -437,7 +437,7 @@ public:
 			m_combo->setCurrentIndex(*m_value);
 		}
 
-		assert(connect(m_combo, SIGNAL(currentIndexChanged(int)), this, SLOT(valueChanged(int))));
+		SNOW_ASSERT(connect(m_combo, SIGNAL(currentIndexChanged(int)), this, SLOT(valueChanged(int))));
 	}
 
 	static ComboIntAttribute* BindInt(QComboBox* combo, int* value, QObject* parent)
@@ -449,7 +449,7 @@ public:
 	{
 		ComboIntAttribute* attr = new ComboIntAttribute(combo, nullptr, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
 		
 		return attr;
 	}
@@ -458,7 +458,7 @@ public:
 	{
 		ComboIntAttribute* attr = new ComboIntAttribute(combo, value, object);
 		
-		assert(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
+		SNOW_ASSERT(connect(attr, SIGNAL(attributeChanged(int)), object, slot));
 		
 		return attr;
 	}

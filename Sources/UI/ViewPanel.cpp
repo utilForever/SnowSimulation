@@ -202,7 +202,7 @@ void ViewPanel::initializeGL()
 	m_infoPanel->SetInfo("Particles", "0");
 
 	// Render ticker
-	assert(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(update())));
+	SNOW_ASSERT(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(update())));
 	m_ticker.start(1000 / FPS);
 	m_timer.start();
 }

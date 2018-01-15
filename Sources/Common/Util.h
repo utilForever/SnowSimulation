@@ -9,10 +9,18 @@
 #ifndef SNOW_SIMULATION_UTIL_H
 #define SNOW_SIMULATION_UTIL_H
 
-#include <cassert>
 #include <stdlib.h>
 #include <iostream>
 #include <time.h>
+
+#if defined(DEBUG) || defined(_DEBUG)
+#define SNOW_DEBUG_NODE
+#include <cassert>
+#define SNOW_ASSERT(x) assert(x)
+#else
+#define SNOW_ASSERT(x) (x)
+#endif
+
 
 #ifndef QT_NO_DEBUG
 #define LOG(...)                                    \

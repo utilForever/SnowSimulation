@@ -35,7 +35,7 @@ Engine::Engine() :
 
 	m_hostParticleCache = nullptr;
 
-	assert(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(Update())));
+	SNOW_ASSERT(connect(&m_ticker, SIGNAL(timeout()), this, SLOT(Update())));
 }
 
 Engine::~Engine()

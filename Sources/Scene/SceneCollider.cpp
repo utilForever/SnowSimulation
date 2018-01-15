@@ -73,10 +73,10 @@ void SceneCollider::InitializeMesh()
 	switch (m_collider->type)
 	{
 	case ColliderType::SPHERE:
-		ObjParser::Load("Resources/Models/SphereCol.obj", colliderMeshes);
+		ObjParser::Load("Datas/Models/SphereCol.obj", colliderMeshes);
 		break;
 	case ColliderType::HALF_PLANE:
-		ObjParser::Load("Resources/Models/Plane.obj", colliderMeshes);
+		ObjParser::Load("Datas/Models/Plane.obj", colliderMeshes);
 		break;
 	default:
 		break;
